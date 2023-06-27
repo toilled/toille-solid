@@ -3,7 +3,7 @@
         "name": "Home",
         "title": "Home",
         "body": [
-            "This is my home page for testing ideas built using React.",
+            "This is my home page for testing ideas built using Solid JS.",
             "I will make the source code available <a href=\"https://github.com/toilled/toille-solid\">here</a>."
         ]
     },
