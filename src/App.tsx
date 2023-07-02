@@ -1,4 +1,4 @@
-import { createSignal, type Component } from 'solid-js';
+import { createSignal, type Component, createEffect } from 'solid-js';
 
 import pages from "./assets/pages.json";
 import Title from "./components/Title";
@@ -7,6 +7,10 @@ import PageContent from "./components/PageContent";
 
 const App: Component = () => {
   const [currentPage, setCurrentPage] = createSignal(pages[0]);
+
+  createEffect(() => {
+    document.title = currentPage().title;
+  });
 
   return (
     <>
