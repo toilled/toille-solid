@@ -1,17 +1,13 @@
 import { Component } from "solid-js";
+import Titles from "../interfaces/Titles";
 
-interface TitleProps {
-  title: string,
-  heading: string
-}
-
-const Title: Component<TitleProps> = (props: TitleProps) => {
+const Title: Component<Titles> = (props: Titles) => {
   return (
     <ul class="animate__animated animate__slideInLeft">
       <li>
         <hgroup>
-          <h1>Elliot Dickerson</h1>
-          <h2>A site to test things</h2>
+          <h1>{props.title}</h1>
+          <h2>{props.heading}</h2>
         </hgroup>
       </li>
     </ul>

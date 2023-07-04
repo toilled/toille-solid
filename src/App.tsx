@@ -1,14 +1,17 @@
 import '@picocss/pico';
-import { createSignal, type Component, createEffect, createResource, Suspense, Show } from 'solid-js';
+import { createSignal, type Component, createEffect } from 'solid-js';
+import Titles from './interfaces/Titles';
 import Page from "./interfaces/Page";
 import Title from "./components/Title";
 import Menu from "./components/Menu";
 import PageContent from "./components/PageContent";
 
-const App: Component<{ pages: Page[] }> = (props: { pages: Page[] }) => {
-  const fetchTitles = async () => (await fetch('http://toille.uk/api/titles')).json();
-  const [titles] = createResource(fetchTitles);
+interface AppProps {
+  titles: Titles,
+  pages: Page[]
+}
 
+const App: Component<AppProps> = (props: AppProps) => {
   const [currentPage, setCurrentPage] = createSignal(props.pages[0]);
 
   createEffect(() => {
@@ -18,11 +21,7 @@ const App: Component<{ pages: Page[] }> = (props: { pages: Page[] }) => {
   return (
     <>
       <nav>
-        <Suspense>
-          <Show when={titles()}>
-            <Title title={titles().title} heading={titles().heading} />
-          </Show>
-        </Suspense>
+        <Title title={props.titles.title} heading={props.titles.heading} />
         <Menu pages={props.pages} setCurrentPage={setCurrentPage} />
       </nav>
       <PageContent page={currentPage} />

@@ -13,13 +13,16 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
+const fetchTitles = async () => (await fetch('http://toille.uk/api/titles')).json();
+const [titles] = createResource(fetchTitles);
+
 const fetchPages = async () => (await fetch('http://toille.uk/api/pages')).json();
 const [pages] = createResource(fetchPages);
 
 render(() => (
   <Suspense>
-    <Show when={pages()}>
-      <App pages={pages()} />
+    <Show when={titles() && pages()}>
+      <App titles={titles()} pages={pages()} />
     </Show>
   </Suspense>
 ), root!);
