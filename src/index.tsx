@@ -17,7 +17,7 @@ const fetchPages = async () => (await fetch('http://toille.uk/api/pages')).json(
 const [pages] = createResource(fetchPages);
 
 render(() => (
-  <Suspense fallback={<p>Loading...</p>}>
+  <Suspense>
     <Show when={pages()}>
       <App pages={pages()} />
     </Show>

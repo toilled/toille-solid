@@ -18,7 +18,7 @@ const App: Component<{ pages: Page[] }> = (props: { pages: Page[] }) => {
   return (
     <>
       <nav>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense>
           <Show when={titles()}>
             <Title title={titles().title} heading={titles().heading} />
           </Show>
