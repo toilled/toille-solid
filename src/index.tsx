@@ -13,7 +13,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-const fetchPages = async () => (await fetch('http://toille.uk/pages')).json();
+const fetchPages = async () => (await fetch('http://toille.uk/api/pages')).json();
 const [pages] = createResource(fetchPages);
 
 render(() => (

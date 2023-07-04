@@ -1,4 +1,11 @@
-function Title() {
+import { Component } from "solid-js";
+
+interface TitleProps {
+  title: string,
+  heading: string
+}
+
+const Title: Component<TitleProps> = (props: TitleProps) => {
   return (
     <ul class="animate__animated animate__slideInLeft">
       <li>
