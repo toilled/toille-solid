@@ -3,6 +3,7 @@ import { render } from 'solid-js/web';
 
 import './index.css';
 import App from './App';
+import { Show, Suspense, createResource } from 'solid-js';
 
 const root = document.getElementById('root');
 
@@ -12,4 +13,13 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-render(() => <App />, root!);
+const fetchPages = async () => (await fetch('http://toille.uk/pages')).json();
+const [pages] = createResource(fetchPages);
+
+render(() => (
+  <Suspense fallback={<p>Loading...</p>}>
+    <Show when={pages()}>
+      <App pages={pages()} />
+    </Show>
+  </Suspense>
+), root!);

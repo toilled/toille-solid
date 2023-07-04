@@ -1,22 +1,24 @@
-import { createSignal, type Component, createEffect } from 'solid-js';
+import { createSignal, type Component, createEffect, createResource } from 'solid-js';
+import Page from "./interfaces/Page";
 
-import pages from "./assets/pages.json";
+import '@picocss/pico';
+
 import Title from "./components/Title";
 import Menu from "./components/Menu";
 import PageContent from "./components/PageContent";
 
-const App: Component = () => {
-  const [currentPage, setCurrentPage] = createSignal(pages[0]);
+const App: Component<{ pages: Page[] }> = (props: { pages: Page[] }) => {
+  const [currentPage, setCurrentPage] = createSignal(props.pages[0]);
 
   createEffect(() => {
-    document.title = currentPage().title;
+    document.title = "Elliot | " + currentPage().name;
   });
 
   return (
     <>
       <nav>
         <Title />
-        <Menu pages={pages} setCurrentPage={setCurrentPage} />
+        <Menu pages={props.pages} setCurrentPage={setCurrentPage} />
       </nav>
       <PageContent page={currentPage} />
     </>

@@ -16,6 +16,7 @@
     "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
+    "@picocss/pico": "^1.5.10",
     "solid-js": "^1.7.6"
   }
 }
