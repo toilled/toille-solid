@@ -19,10 +19,16 @@ const [titles] = createResource(fetchTitles);
 const fetchPages = async () => (await fetch('http://toille.uk/api/pages')).json();
 const [pages] = createResource(fetchPages);
 
+const fetchActivity = async () => (await fetch('http://www.boredapi.com/api/activity/')).json();
+const [activity] = createResource(fetchActivity);
+
 render(() => (
-  <Suspense>
+  <>
     <Show when={titles() && pages()}>
       <App titles={titles()} pages={pages()} />
     </Show>
-  </Suspense>
+    <Show when={activity()}>
+      <footer class="animate__animated animate__fadeInUp">{activity().activity}</footer>
+    </Show>
+  </>
 ), root!);
