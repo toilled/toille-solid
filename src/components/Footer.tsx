@@ -12,10 +12,10 @@ const Footer: Component<FooterProps> = (props: FooterProps) => {
             class="animate__animated animate__fadeInUp"
             onclick={props.refetch}
             title="Click for a new suggestion"
-            style="cursor: pointer"
+            style="cursor: pointer; user-select: none;"
         >
             <p>
-                <a>Try this:</a> {props.activity.activity}
+                <a>Try this activity:</a> {props.activity.activity}
             </p>
         </footer>
     );

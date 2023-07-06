@@ -6,7 +6,7 @@ const Title: Component<Titles> = (props: Titles) => {
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
   return (
-    <ul class="animate__animated animate__slideInLeft">
+    <ul class="animate__animated animate__slideInLeft" style="cursor: pointer;">
       <li>
         <hgroup>
           <h1
@@ -14,14 +14,26 @@ const Title: Component<Titles> = (props: Titles) => {
               animate__animated: true,
               animate__heartBeat: titleAnimate() === true
             }}
-            onclick={() => { setTitleAnimate(true); setTimeout(() => setTitleAnimate(false), 1000) }}
+            onclick={() => {
+              if (!titleAnimate()) {
+                setTitleAnimate(true);
+                setTimeout(() => setTitleAnimate(false), 900)
+              }
+            }}
+            style="user-select: none;"
           >{props.title}</h1>
           <h2
             classList={{
               animate__animated: true,
               animate__heartBeat: subtitleAnimate() === true
             }}
-            onclick={() => { setSubtitleAnimate(true); setTimeout(() => setSubtitleAnimate(false), 1000) }}
+            onclick={() => {
+              if (!subtitleAnimate()) {
+                setSubtitleAnimate(true);
+                setTimeout(() => setSubtitleAnimate(false), 900)
+              }
+            }}
+            style="user-select: none;"
           >{props.heading}</h2>
         </hgroup>
       </li>
