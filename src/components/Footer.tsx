@@ -1,23 +1,22 @@
-import { Component } from "solid-js";
-import Activity from "../interfaces/Activity";
+import { Component, Show, createResource } from "solid-js";
 
-interface FooterProps {
-    activity: Activity;
-    refetch: () => void;
-}
+const Footer: Component = () => {
+    const fetchActivity = async () => (await fetch('http://www.boredapi.com/api/activity/')).json();
+    const [activity, { refetch }] = createResource(fetchActivity);
 
-const Footer: Component<FooterProps> = (props: FooterProps) => {
     return (
-        <footer
-            class="animate__animated animate__fadeInUp"
-            onclick={props.refetch}
-            title="Click for a new suggestion"
-            style="cursor: pointer; user-select: none;"
-        >
-            <p>
-                <a>Try this activity:</a> {props.activity.activity}
-            </p>
-        </footer>
+        <Show when={activity()}>
+            <footer
+                class="animate__animated animate__fadeInUp"
+                onclick={refetch}
+                title="Click for a new suggestion"
+                style="cursor: pointer; user-select: none;"
+            >
+                <p>
+                    <strong>Try this activity:</strong> {activity().activity}
+                </p>
+            </footer>
+        </Show>
     );
 }
 

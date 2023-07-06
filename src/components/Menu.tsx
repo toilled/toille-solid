@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import Page from "../interfaces/Page";
 
 interface MenuProps {
@@ -7,12 +7,21 @@ interface MenuProps {
 }
 
 const Menu: Component<MenuProps> = (props: MenuProps) => {
+  const [activeItem, setActiveItem] = createSignal(0);
+
   return (
     <ul class="animate__animated animate__slideInRight">
-      {props.pages.map(page => {
+      {props.pages.map((page, key) => {
         return (
-          <li onClick={() => props.setCurrentPage(page)}>
-            <a class='pointer'>{page.name}</a>
+          <li>
+            <a
+              onClick={() => { props.setCurrentPage(page); setActiveItem(key) }}
+              classList={{
+                pointer: true,
+                animate__animated: true,
+                animate__fadeOutDown: activeItem() === key
+              }}
+            >{page.name}</a>
           </li>);
       })}
     </ul>
