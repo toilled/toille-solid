@@ -7,12 +7,12 @@ const Footer: Component = () => {
     return (
         <Show when={activity()}>
             <footer
-                class="animate__animated animate__fadeInUp"
+                class="footer"
                 onclick={refetch}
                 title="Click for a new suggestion"
                 style="cursor: pointer; user-select: none;"
             >
-                <p>
+                <p class="no-margin">
                     <strong>Try this activity:</strong> {activity().activity}
                 </p>
             </footer>

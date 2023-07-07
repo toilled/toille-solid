@@ -19,7 +19,8 @@ const Menu: Component<MenuProps> = (props: MenuProps) => {
               classList={{
                 pointer: true,
                 animate__animated: true,
-                animate__fadeOutDown: activeItem() === key
+                animate__rubberBand: activeItem() === key,
+                selected: activeItem() === key
               }}
             >{page.name}</a>
           </li>);
