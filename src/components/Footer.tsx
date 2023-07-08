@@ -7,7 +7,6 @@ const Footer: Component = () => {
     return (
         <Show when={activity()}>
             <footer
-                class="footer"
                 onclick={refetch}
                 title="Click for a new suggestion"
                 style="cursor: pointer; user-select: none;"
