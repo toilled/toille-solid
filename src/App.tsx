@@ -21,7 +21,7 @@ const App: Component<AppProps> = (props: AppProps) => {
   });
 
   return (
-    <main class="container">
+    <main class="container" style="padding-bottom: 0;">
       <nav>
         <Title title={props.titles.title} heading={props.titles.heading} />
         <Menu pages={props.pages} setCurrentPage={setCurrentPage} />
