@@ -6,15 +6,18 @@ const Footer: Component = () => {
 
     return (
         <Show when={activity()}>
-            <footer
+            <article
+                class="pointer animate__animated animate__zoomIn"
                 onclick={refetch}
                 title="Click for a new suggestion"
-                style="cursor: pointer; user-select: none;"
             >
+                <header>
+                    <strong>Try this activity</strong> (The Bored API)
+                </header>
                 <p class="no-margin">
-                    <strong>Try this activity:</strong> {activity().activity}
+                    {activity().activity}
                 </p>
-            </footer>
+            </article>
         </Show>
     );
 }

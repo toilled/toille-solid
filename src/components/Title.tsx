@@ -6,7 +6,7 @@ const Title: Component<Titles> = (props: Titles) => {
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
   return (
-    <ul class="animate__animated animate__slideInLeft" style="cursor: pointer;">
+    <ul class="animate__animated animate__slideInLeft pointer">
       <li>
         <hgroup>
           <h1
@@ -20,7 +20,6 @@ const Title: Component<Titles> = (props: Titles) => {
                 setTimeout(() => setTitleAnimate(false), 900)
               }
             }}
-            style="user-select: none;"
           >{props.title}</h1>
           <h2
             classList={{
@@ -33,7 +32,6 @@ const Title: Component<Titles> = (props: Titles) => {
                 setTimeout(() => setSubtitleAnimate(false), 900)
               }
             }}
-            style="user-select: none;"
           >{props.heading}</h2>
         </hgroup>
       </li>

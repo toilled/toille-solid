@@ -1,6 +1,5 @@
 import { Component } from "solid-js";
 import Page from "../interfaces/Page";
-import Footer from "./Footer";
 
 interface PageProps {
   page: () => Page
@@ -17,7 +16,6 @@ const PageContent: Component<PageProps> = (props: PageProps) => {
       {currentPage().body.map((element, index) => {
         return <p innerHTML={element}></p>;
       })}
-      <Footer />
     </article>
   );
 }
