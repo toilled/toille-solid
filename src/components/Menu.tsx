@@ -6,16 +6,16 @@ interface MenuProps {
   setCurrentPage: (page: Page) => void;
 }
 
-const Menu: Component<MenuProps> = (props: MenuProps) => {
+const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
   const [activeItem, setActiveItem] = createSignal(0);
 
   return (
     <ul class="animate__animated animate__slideInRight">
-      {props.pages.map((page, key) => {
+      {pages.map((page, key) => {
         return (
           <li>
             <a
-              onClick={() => { props.setCurrentPage(page); setActiveItem(key) }}
+              onClick={() => { setCurrentPage(page); setActiveItem(key) }}
               classList={{
                 pointer: true,
                 animate__animated: true,

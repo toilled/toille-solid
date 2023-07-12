@@ -13,8 +13,8 @@ interface AppProps {
   pages: Page[]
 }
 
-const App: Component<AppProps> = (props: AppProps) => {
-  const [currentPage, setCurrentPage] = createSignal(props.pages[0]);
+const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
+  const [currentPage, setCurrentPage] = createSignal(pages[0]);
 
   createEffect(() => {
     document.title = "Elliot | " + currentPage().name;
@@ -23,8 +23,8 @@ const App: Component<AppProps> = (props: AppProps) => {
   return (
     <>
       <nav>
-        <Title title={props.titles.title} heading={props.titles.heading} />
-        <Menu pages={props.pages} setCurrentPage={setCurrentPage} />
+        <Title title={titles.title} heading={titles.heading} />
+        <Menu pages={pages} setCurrentPage={setCurrentPage} />
       </nav>
       <PageContent page={currentPage} />
       <Footer />

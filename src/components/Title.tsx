@@ -1,7 +1,7 @@
 import { Component, createSignal } from "solid-js";
 import Titles from "../interfaces/Titles";
 
-const Title: Component<Titles> = (props: Titles) => {
+const Title: Component<Titles> = ({ title, heading }: Titles) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
@@ -20,7 +20,7 @@ const Title: Component<Titles> = (props: Titles) => {
                 setTimeout(() => setTitleAnimate(false), 900)
               }
             }}
-          >{props.title}</h1>
+          >{title}</h1>
           <h2
             classList={{
               animate__animated: true,
@@ -32,7 +32,7 @@ const Title: Component<Titles> = (props: Titles) => {
                 setTimeout(() => setSubtitleAnimate(false), 900)
               }
             }}
-          >{props.heading}</h2>
+          >{heading}</h2>
         </hgroup>
       </li>
     </ul>

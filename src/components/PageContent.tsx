@@ -5,8 +5,8 @@ interface PageProps {
   page: () => Page
 }
 
-const PageContent: Component<PageProps> = (props: PageProps) => {
-  let currentPage = props.page;
+const PageContent: Component<PageProps> = ({ page }: PageProps) => {
+  let currentPage = page;
 
   return (
     <article class="animate__animated animate__zoomIn">
