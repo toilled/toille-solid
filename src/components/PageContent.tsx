@@ -6,15 +6,18 @@ interface PageProps {
 }
 
 const PageContent: Component<PageProps> = ({ page }: PageProps) => {
-  let currentPage = page;
 
   return (
     <article class="animate__animated animate__zoomIn">
       <header>
-        <h2 class="no-margin">{currentPage().title}</h2>
+        <h2 class="marginless">{page().title}</h2>
       </header>
-      {currentPage().body.map((element, index) => {
-        return <p innerHTML={element}></p>;
+      {page().body.map((element, index) => {
+        const paragraphClasses = { marginless: false };
+        if (index + 1 === page().body.length) {
+          paragraphClasses.marginless = true;
+        }
+        return <p innerHTML={element} classList={paragraphClasses}></p>;
       })}
     </article>
   );

@@ -22,8 +22,11 @@ const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
                 animate__rubberBand: activeItem() === key,
                 selected: activeItem() === key
               }}
-            >{page.name}</a>
-          </li>);
+            >
+              {page.name}
+            </a>
+          </li>
+        );
       })}
     </ul>
   );

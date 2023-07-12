@@ -14,7 +14,7 @@ const Footer: Component = () => {
                 <header>
                     <strong>Try this activity</strong> (The Bored API)
                 </header>
-                <p class="no-margin">
+                <p class="marginless">
                     {activity().activity}
                 </p>
             </article>
