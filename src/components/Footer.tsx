@@ -14,9 +14,11 @@ const Footer: Component = () => {
                 <header>
                     <strong>Try this activity</strong> (The Bored API)
                 </header>
-                <p class="marginless">
-                    {activity().activity}
-                </p>
+                <Show when={!activity.loading} fallback={<p class="marginless animate__animated animate__zoomOut">{activity().activity}</p>}>
+                    <p class="marginless animate__animated animate__zoomIn">
+                        {activity().activity}
+                    </p>
+                </Show>
             </article>
         </Show>
     );
