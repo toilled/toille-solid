@@ -15,7 +15,7 @@ const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
   const [currentPage, setCurrentPage] = createSignal(pages[0]);
 
   createEffect(() => {
-    document.title = "Elliot | " + currentPage().name;
+    document.title = "Elliot (testing) | " + currentPage().name;
   });
 
   return (
