@@ -29,3 +29,11 @@ jobs:
         with:
           name: dist-folder
           path: dist
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.toille.uk
+          username: toille
+          password: ${{ secrets.ftp_password }}
+          local-dir: ./dist/
