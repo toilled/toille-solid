@@ -1,5 +1,7 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
+import '@picocss/pico';
+import 'animate.css';
 
 import './index.css';
 import App from './App';
@@ -21,7 +23,7 @@ const [pages] = createResource(fetchPages);
 
 render(() => (
   <>
-    <Show when={titles() && pages()}>
+    <Show when={titles() && pages()} fallback={<h1 class="animate__animated animate__zoomIn">Loading...</h1>}>
       <App titles={titles()} pages={pages()} />
     </Show>
   </>

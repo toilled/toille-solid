@@ -1,5 +1,3 @@
-import '@picocss/pico';
-import 'animate.css';
 import { createSignal, type Component, createEffect } from 'solid-js';
 import Titles from './interfaces/Titles';
 import Page from "./interfaces/Page";
@@ -23,7 +21,7 @@ const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
   return (
     <>
       <nav>
-        <Title title={titles.title} heading={titles.heading} />
+        <Title title={titles.title} subtitle={titles.subtitle} />
         <Menu pages={pages} setCurrentPage={setCurrentPage} />
       </nav>
       <PageContent page={currentPage} />

@@ -1,6 +1,6 @@
 interface Titles {
     title: string,
-    heading: string
+    subtitle: string
 }
 
 export default Titles;
