@@ -10,7 +10,3 @@
 .selected {
   font-weight: bold;
 }
-
-body {
-  overflow: hidden; /* Hide scrollbars */
-}
