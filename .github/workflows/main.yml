@@ -1,4 +1,4 @@
-name: Check dist/
+name: Upload dist/
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  check-dist:
+  upload-dist:
     runs-on: ubuntu-latest
 
     steps:
