@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Home",
+    "title": "Home",
+    "body": [
+      "This is my home page for testing ideas built using Solid JS. This will change a lot as I experiment with ideas I have.",
+      "I will make the source code available on this <a href=\"https://github.com/toilled/toille-solid\" target=\"_blank\">GitHub repository</a>."
+    ]
+  },
+  {
+    "name": "About",
+    "title": "About Me",
+    "body": [
+      "I am a BSc (Hons) graduate who has been confident working with computers in some way for most of my life.",
+      "I am currently based in the Gloucestershire area and am looking for local or remote work."
+    ]
+  },
+  {
+    "name": "Interests",
+    "title": "My Interests",
+    "body": [
+      "I develop new code ideas as a hobby in my spare time, actively keeping a check on new languages and new computing technologies on the internet.",
+      "I keep up to date with music and play musical instruments including the guitar."
+    ]
+  }
+]
