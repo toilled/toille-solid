@@ -6,7 +6,7 @@ const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
   return (
-    <ul class="animate__animated animate__slideInLeft pointer">
+    <ul class="animate__animated animate__fadeInLeft pointer">
       <li>
         <hgroup>
           <h1

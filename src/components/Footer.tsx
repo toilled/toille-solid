@@ -7,7 +7,7 @@ const Footer: Component = () => {
     return (
         <Show when={activity()}>
             <article
-                class="pointer animate__animated animate__zoomIn"
+                class="pointer animate__animated animate__fadeInUp"
                 onclick={refetch}
                 title="Click for a new suggestion"
             >

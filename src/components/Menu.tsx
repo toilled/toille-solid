@@ -10,7 +10,7 @@ const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
   const [activeItem, setActiveItem] = createSignal(0);
 
   return (
-    <ul class="animate__animated animate__slideInRight">
+    <ul class="animate__animated animate__fadeInRight">
       {pages.map((page, key) => {
         return (
           <li>
