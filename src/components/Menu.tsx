@@ -13,8 +13,7 @@ const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
     <ul class="animate__animated animate__fadeInRight">
       {pages.map((page, key) => {
         return (
-          <li>
-            <a
+          <li
               onClick={() => { setCurrentPage(page); setActiveItem(key) }}
               classList={{
                 pointer: true,
@@ -24,7 +23,6 @@ const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
               }}
             >
               {page.name}
-            </a>
           </li>
         );
       })}
