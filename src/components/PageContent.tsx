@@ -10,7 +10,7 @@ const PageContent: Component<PageProps> = ({ page }: PageProps) => {
   return (
     <article class="animate__animated animate__zoomIn">
       <header>
-        <h2 class="marginless">{page().title}</h2>
+        <h2 class="marginless title">{page().title}</h2>
       </header>
       {page().body.map((element, index) => {
         const paragraphClasses = { marginless: false };

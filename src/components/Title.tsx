@@ -11,6 +11,7 @@ const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
         <hgroup>
           <h1
             classList={{
+              title: true,
               animate__animated: true,
               animate__heartBeat: titleAnimate() === true
             }}
@@ -23,6 +24,7 @@ const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
           >{title}</h1>
           <h2
             classList={{
+              title: true,
               animate__animated: true,
               animate__heartBeat: subtitleAnimate() === true
             }}
