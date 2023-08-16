@@ -14,7 +14,7 @@ const Footer: Component = () => {
                 <header>
                     <strong>
                         Try this&nbsp;
-                        <Show when={!activity.loading} fallback={<>{activity().type}</>}>
+                        <Show when={!activity.loading} fallback={<>{activity().type}&nbsp;</>}>
                             {activity().type}&nbsp;
                         </Show>
                         activity&nbsp;
