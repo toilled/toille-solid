@@ -3,11 +3,12 @@ import { Component } from "solid-js";
 interface ParagraphProps {
     paragraph: string;
     index: number;
+    total: number;
 };
 
-export const Paragraph: Component<ParagraphProps> = ({ paragraph, index }: ParagraphProps) => {
+export const Paragraph: Component<ParagraphProps> = ({ paragraph, index, total }: ParagraphProps) => {
     const paragraphClasses = { marginless: false };
-    if (index + 1 === paragraph.length) {
+    if (index + 1 === total) {
         paragraphClasses.marginless = true;
     }
 

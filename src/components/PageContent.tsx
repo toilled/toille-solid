@@ -12,8 +12,8 @@ export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
       <header>
         <h2 class="marginless title">{page().title}</h2>
       </header>
-      {page().body.map((element, index) => {
-        return <Paragraph paragraph={element} index={index} />
+      {page().body.map((paragraph, index) => {
+        return <Paragraph paragraph={paragraph} index={index} total={page().body.length} />
       })}
     </article>
   );
