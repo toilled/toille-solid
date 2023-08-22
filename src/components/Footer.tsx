@@ -1,8 +1,14 @@
 import { Component, Show, createResource } from "solid-js";
 
-const Footer: Component = () => {
+export const Footer: Component = () => {
     const fetchActivity = async () => (await fetch('https://www.boredapi.com/api/activity/')).json();
     const [activity, { refetch }] = createResource(fetchActivity);
+
+    const fallback = () => {
+        return (
+            <p class="marginless animate__animated animate__fadeOut">{activity().activity}</p>
+        )
+    };
 
     return (
         <Show when={activity()}>
@@ -20,7 +26,7 @@ const Footer: Component = () => {
                         activity&nbsp;
                     </strong> (The Bored API)
                 </header>
-                <Show when={!activity.loading} fallback={<p class="marginless animate__animated animate__fadeOut">{activity().activity}</p>}>
+                <Show when={!activity.loading} fallback={fallback()}>
                     <p class="marginless animate__animated animate__fadeIn">
                         {activity().activity}
                     </p>
@@ -28,6 +34,4 @@ const Footer: Component = () => {
             </article>
         </Show>
     );
-}
-
-export default Footer;
+};

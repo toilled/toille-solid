@@ -1,26 +1,20 @@
 import { Component } from "solid-js";
-import Page from "../interfaces/Page";
+import { Page } from "../interfaces/Page";
+import { Paragraph } from "./Paragraph";
 
 interface PageProps {
   page: () => Page
-}
+};
 
-const PageContent: Component<PageProps> = ({ page }: PageProps) => {
-
+export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
   return (
     <article class="animate__animated animate__zoomIn">
       <header>
         <h2 class="marginless title">{page().title}</h2>
       </header>
       {page().body.map((element, index) => {
-        const paragraphClasses = { marginless: false };
-        if (index + 1 === page().body.length) {
-          paragraphClasses.marginless = true;
-        }
-        return <p innerHTML={element} classList={paragraphClasses}></p>;
+        return <Paragraph paragraph={element} index={index} />
       })}
     </article>
   );
-}
-
-export default PageContent;
+};

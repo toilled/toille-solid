@@ -1,7 +1,7 @@
 import { Component, createSignal } from "solid-js";
-import Titles from "../interfaces/Titles";
+import { Titles } from "../interfaces/Titles";
 
-const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
+export const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
@@ -39,6 +39,4 @@ const Title: Component<Titles> = ({ title, subtitle }: Titles) => {
       </li>
     </ul>
   );
-}
-
-export default Title;
+};

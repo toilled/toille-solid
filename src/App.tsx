@@ -1,17 +1,17 @@
 import { createSignal, type Component, createEffect } from 'solid-js';
-import Titles from './interfaces/Titles';
-import Page from "./interfaces/Page";
-import Title from "./components/Title";
-import Menu from "./components/Menu";
-import PageContent from "./components/PageContent";
-import Footer from './components/Footer';
+import { Titles } from './interfaces/Titles';
+import { Page } from "./interfaces/Page";
+import { Title } from "./components/Title";
+import { Menu } from "./components/Menu";
+import { PageContent } from "./components/PageContent";
+import { Footer } from './components/Footer';
 
 interface AppProps {
   titles: Titles,
   pages: Page[]
-}
+};
 
-const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
+export const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
   const [currentPage, setCurrentPage] = createSignal(pages[0]);
 
   createEffect(() => {
@@ -29,5 +29,3 @@ const App: Component<AppProps> = ({ titles, pages }: AppProps) => {
     </>
   );
 };
-
-export default App;
