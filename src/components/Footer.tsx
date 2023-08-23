@@ -11,7 +11,7 @@ export const Footer: Component = () => {
     };
 
     return (
-        <Show when={activity()}>
+        <Show when={activity()} fallback={<article aria-busy="true" />}>
             <article
                 class="pointer animate__animated animate__fadeInUp"
                 onclick={refetch}
