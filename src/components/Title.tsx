@@ -9,8 +9,28 @@ export const Title: Component<TitleProps> = ({ title, subtitle }: TitleProps) =>
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
+  function animateTitle() {
+    if (!titleAnimate()) {
+      setTitleAnimate(true);
+      setTimeout(() => setTitleAnimate(false), 900);
+    }
+  }
+
+  function animateSubtitle() {
+    if (!subtitleAnimate()) {
+      setSubtitleAnimate(true);
+      setTimeout(() => setSubtitleAnimate(false), 900);
+    }
+  }
+
+  const titleClasses: any = {
+    animate__animated: true,
+    animate__fadeInLeft: true,
+    pointer: true,
+  };
+
   return (
-    <ul class="animate__animated animate__fadeInLeft pointer">
+    <ul classList={titleClasses}>
       <li>
         <hgroup>
           <h1
@@ -19,12 +39,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle }: TitleProps) =>
               animate__animated: true,
               animate__heartBeat: titleAnimate() === true
             }}
-            onclick={() => {
-              if (!titleAnimate()) {
-                setTitleAnimate(true);
-                setTimeout(() => setTitleAnimate(false), 900)
-              }
-            }}
+            onclick={animateTitle}
           >{title}</h1>
           <h2
             classList={{
@@ -32,12 +47,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle }: TitleProps) =>
               animate__animated: true,
               animate__heartBeat: subtitleAnimate() === true
             }}
-            onclick={() => {
-              if (!subtitleAnimate()) {
-                setSubtitleAnimate(true);
-                setTimeout(() => setSubtitleAnimate(false), 900)
-              }
-            }}
+            onclick={animateSubtitle}
           >{subtitle}</h2>
         </hgroup>
       </li>

@@ -10,10 +10,15 @@ interface MenuProps {
 export const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
   const [activeItem, setActiveItem] = createSignal(0);
 
+  const classes: any = {
+    animate__animated: true,
+    animate__fadeInRight: true,
+  };
+
   return (
-    <ul class="animate__animated animate__fadeInRight">
+    <ul classList={classes}>
       {pages.map((page, key) => {
-        return (<MenuItem setCurrentPage={setCurrentPage} page={page} key={key} setActiveItem={setActiveItem} activeItem={activeItem} />)
+        return <MenuItem setCurrentPage={setCurrentPage} page={page} key={key} setActiveItem={setActiveItem} activeItem={activeItem} />
       })}
     </ul>
   );

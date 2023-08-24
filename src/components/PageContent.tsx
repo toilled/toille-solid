@@ -7,13 +7,23 @@ interface PageProps {
 };
 
 export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
+  const contentClasses: any = {
+    animate__animated: true,
+    animate__zoomIn: true,
+  };
+
+  const headingClasses: any = {
+    marginless: true,
+    title: true,
+  };
+
   return (
-    <article class="animate__animated animate__zoomIn">
+    <article classList={contentClasses}>
       <header>
-        <h2 class="marginless title">{page().title}</h2>
+        <h2 classList={headingClasses}>{page().title}</h2>
       </header>
       {page().body.map((paragraph, index) => {
-        return <Paragraph paragraph={paragraph} index={index} total={page().body.length} />
+        return <Paragraph paragraph={paragraph} last={index + 1 === page().body.length} />;
       })}
     </article>
   );

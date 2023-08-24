@@ -5,15 +5,33 @@ export const Footer: Component = () => {
     const [activity, { refetch }] = createResource(fetchActivity);
 
     const fallback = () => {
+        const fallbackClasses: any = {
+            marginless: true,
+            animate__animated: true,
+            animate__fadeIn: true,
+        };
+
         return (
-            <p class="marginless animate__animated animate__fadeOut">{activity().activity}</p>
+            <p classList={fallbackClasses}>{activity().activity}</p>
         )
+    };
+
+    const footerClasses: any = {
+        pointer: true,
+        animate__animated: true,
+        animate__fadeInUp: true,
+    };
+
+    const activityClasses: any = {
+        marginless: true,
+        animate__animated: true,
+        animate__fadeIn: true,
     };
 
     return (
         <Show when={activity()} fallback={<article aria-busy="true" />}>
             <article
-                class="pointer animate__animated animate__fadeInUp"
+                classList={footerClasses}
                 onclick={refetch}
                 title="Click for a new suggestion"
             >
@@ -27,7 +45,7 @@ export const Footer: Component = () => {
                     </strong> (The Bored API)
                 </header>
                 <Show when={!activity.loading} fallback={fallback()}>
-                    <p class="marginless animate__animated animate__fadeIn">
+                    <p classList={activityClasses}>
                         {activity().activity}
                     </p>
                 </Show>

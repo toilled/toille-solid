@@ -2,17 +2,14 @@ import { Component } from "solid-js";
 
 interface ParagraphProps {
     paragraph: string;
-    index: number;
-    total: number;
+    last: boolean;
 };
 
-export const Paragraph: Component<ParagraphProps> = ({ paragraph, index, total }: ParagraphProps) => {
-    const paragraphClasses = { marginless: false };
-    if (index + 1 === total) {
+export const Paragraph: Component<ParagraphProps> = ({ paragraph, last }: ParagraphProps) => {
+    const paragraphClasses: any = {};
+    if (last) {
         paragraphClasses.marginless = true;
     }
 
-    return (
-        <p innerHTML={paragraph} classList={paragraphClasses}></p>
-    )
+    return <p innerHTML={paragraph} classList={paragraphClasses}></p>;
 };
