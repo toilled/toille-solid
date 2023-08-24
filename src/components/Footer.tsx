@@ -8,7 +8,7 @@ export const Footer: Component = () => {
         const fallbackClasses: any = {
             marginless: true,
             animate__animated: true,
-            animate__fadeIn: true,
+            animate__fadeOut: true,
         };
 
         return (
