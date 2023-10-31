@@ -29,27 +29,28 @@ export const Footer: Component = () => {
     };
 
     return (
-        <Show when={activity()} fallback={<article aria-busy="true" />}>
-            <article
-                classList={footerClasses}
-                onclick={refetch}
-                title="Click for a new suggestion"
-            >
-                <header>
-                    <strong>
-                        Try this&nbsp;
-                        <Show when={!activity.loading} fallback={<>{activity().type}&nbsp;</>}>
-                            {activity().type}&nbsp;
-                        </Show>
-                        activity&nbsp;
-                    </strong> (The Bored API)
-                </header>
-                <Show when={!activity.loading} fallback={fallback()}>
-                    <p classList={activityClasses}>
-                        {activity().activity}
-                    </p>
-                </Show>
-            </article>
-        </Show>
+        <div classList={footerClasses}>
+            <Show when={activity()} fallback={<article aria-busy="true" />}>
+                <article
+                    onclick={refetch}
+                    title="Click for a new suggestion"
+                >
+                    <header>
+                        <strong>
+                            Try this&nbsp;
+                            <Show when={!activity.loading} fallback={<>{activity().type}&nbsp;</>}>
+                                {activity().type}&nbsp;
+                            </Show>
+                            activity&nbsp;
+                        </strong> (The Bored API)
+                    </header>
+                    <Show when={!activity.loading} fallback={fallback()}>
+                        <p classList={activityClasses}>
+                            {activity().activity}
+                        </p>
+                    </Show>
+                </article>
+            </Show>
+        </div>
     );
 };
