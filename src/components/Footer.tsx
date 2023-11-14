@@ -30,7 +30,7 @@ export const Footer: Component = () => {
 
     return (
         <div classList={footerClasses}>
-            <Show when={activity()} fallback={<article aria-busy="true" />}>
+            <Show when={activity()} fallback={<article aria-busy="true"><header /></article>}>
                 <article
                     onclick={refetch}
                     title="Click for a new suggestion"
