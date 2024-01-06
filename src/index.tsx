@@ -14,7 +14,6 @@ import pages from './configs/pages.json';
 import titles from './configs/titles.json';
 
 const root = document.getElementById('root');
-
 const [currentPage, setCurrentPage] = createSignal(pages[0]);
 
 createEffect(() => {

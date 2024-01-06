@@ -3,7 +3,7 @@
     "name": "Home",
     "title": "Home",
     "body": [
-      "This is my home page for testing ideas built using Solid JS. This will change a lot as I experiment with ideas I have.",
+      "This is my home page for testing ideas built using Solid JS. This may change at times as I experiment with ideas I have.",
       "The source code for this site is available on <a href=\"https://github.com/toilled/toille-solid\" target=\"_blank\">this GitHub repository</a>."
     ]
   },
@@ -12,14 +12,14 @@
     "title": "About Me",
     "body": [
       "I am a BSc (Hons) graduate who has been confident working with computers in some way for most of my life.",
-      "I am currently based in the Gloucestershire area and available for local or remote work."
+      "I primarily use PHP but am able to use JavaScript at times."
     ]
   },
   {
     "name": "Interests",
     "title": "My Interests",
     "body": [
-      "I develop new code ideas as a hobby in my spare time, actively keeping a check on new languages and new computing technologies on the internet.",
+      "I develop new code ideas as a hobby in my spare time, actively keeping a check on new languages.",
       "I keep up to date with music and play musical instruments including the guitar."
     ]
   }

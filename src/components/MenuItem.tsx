@@ -17,7 +17,7 @@ export const MenuItem: Component<MenuItemProps> = ({ setCurrentPage, page, key, 
                 classList={{
                     pointer: true,
                     animate__animated: true,
-                    animate__rubberBand: activeItem() === key,
+                    animate__tada: activeItem() === key,
                     selected: activeItem() === key
                 }}
             >
