@@ -4,6 +4,7 @@ export const Footer: Component = () => {
     const fetchActivity = async () => (await fetch('https://www.boredapi.com/api/activity/')).json();
     const [activity, { refetch }] = createResource(fetchActivity);
     const [hideHint, setHideHint] = createSignal(false);
+    const [hintFade, setHintFade] = createSignal(false);
 
     const fallback = () => {
         const fallbackClasses: any = {
@@ -21,17 +22,18 @@ export const Footer: Component = () => {
         const classes: any = {
             animate__animated: true,
             animate__fadeOut: true,
+            hide: hintFade(),
         };
 
         return (
-            <span classList={classes} style="float: right;font-style: oblique;">Click for suggestions</span>
+            <footer classList={classes} style="font-style: oblique;">Click to update</footer>
         );
     };
 
     const footerClasses: any = {
         pointer: true,
         animate__animated: true,
-        animate__fadeInUp: true,
+        animate__zoomIn: true,
     };
 
     const activityClasses: any = {
@@ -44,6 +46,9 @@ export const Footer: Component = () => {
         refetch();
         if (!hideHint()) {
             setHideHint(true);
+            setTimeout(() => {
+                setHintFade(true);
+            }, 600);
         }
     }
 
@@ -61,13 +66,14 @@ export const Footer: Component = () => {
                                 {activity().type}&nbsp;
                             </Show>
                             activity
-                        </strong> (The Bored API)<Show when={!hideHint()} fallback={hintFallback()}><span style="float: right;font-style: oblique;">Click for suggestions</span></Show>
+                        </strong> (The Bored API)
                     </header>
                     <Show when={!activity.loading} fallback={fallback()}>
                         <p classList={activityClasses}>
                             {activity().activity}
                         </p>
                     </Show>
+                    <Show when={!hideHint()} fallback={hintFallback()}><footer style="font-style: oblique;">Click to update</footer></Show>
                 </article>
             </Show>
         </div>
