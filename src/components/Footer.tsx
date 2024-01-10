@@ -14,7 +14,9 @@ export const Footer: Component = () => {
         };
 
         return (
-            <p classList={fallbackClasses}>{activity().activity}</p>
+            <p classList={fallbackClasses}>
+                {activity().activity}
+            </p>
         );
     };
 
@@ -26,7 +28,9 @@ export const Footer: Component = () => {
         };
 
         return (
-            <footer classList={classes} style="font-style: oblique;">Click to update</footer>
+            <footer classList={classes} style="font-style: oblique; font-size: 0.8em; padding: 0.8em; padding-left: var(--block-spacing-horizontal);">
+                Click to update
+            </footer>
         );
     };
 
@@ -73,7 +77,11 @@ export const Footer: Component = () => {
                             {activity().activity}
                         </p>
                     </Show>
-                    <Show when={!hideHint()} fallback={hintFallback()}><footer style="font-style: oblique;">Click to update</footer></Show>
+                    <Show when={!hideHint()} fallback={hintFallback()}>
+                        <footer style="font-style: oblique; font-size: 0.8em; padding: 0.8em; padding-left: var(--block-spacing-horizontal);">
+                            Click to update
+                        </footer>
+                    </Show>
                 </article>
             </Show>
         </div>
