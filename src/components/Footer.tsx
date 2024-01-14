@@ -23,14 +23,23 @@ export const Footer: Component = () => {
     const hintFallback = () => {
         const classes: any = {
             animate__animated: true,
-            animate__fadeOut: true,
+            animate__rotateOutDownLeft: true,
             hide: hintFade(),
         };
 
         return (
-            <footer classList={classes} style="font-style: oblique; font-size: 0.8em; padding: 0.8em; padding-left: var(--block-spacing-horizontal);">
-                Click to update
-            </footer>
+            <article classList={classes} style="padding-top: 0; margin-top: 0">
+                <footer style={{
+                    "font-style": "oblique",
+                    "font-size": "0.8em",
+                    "padding": "0.8em",
+                    "padding-left": "var(--block-spacing-horizontal)",
+                    "margin-top": 0,
+                    "z-index": 1
+                }}>
+                    Click to update
+                </footer>
+            </article>
         );
     };
 
@@ -57,11 +66,11 @@ export const Footer: Component = () => {
     }
 
     return (
-        <div classList={footerClasses}>
+        <div classList={footerClasses} onclick={newSuggestion}>
             <Show when={activity()} fallback={<article aria-busy="true"><header /></article>}>
                 <article
-                    onclick={newSuggestion}
                     title="Click for a new suggestion"
+                    style={{ "margin-bottom": 0 }}
                 >
                     <header>
                         <strong>
@@ -77,13 +86,22 @@ export const Footer: Component = () => {
                             {activity().activity}
                         </p>
                     </Show>
-                    <Show when={!hideHint()} fallback={hintFallback()}>
-                        <footer style="font-style: oblique; font-size: 0.8em; padding: 0.8em; padding-left: var(--block-spacing-horizontal);">
-                            Click to update
-                        </footer>
-                    </Show>
                 </article>
             </Show>
-        </div>
+
+            <Show when={!hideHint()} fallback={hintFallback()}>
+                <article style={{ "padding-top": 0, "margin-top": 0 }}>
+                    <footer style={{
+                        "font-style": "oblique",
+                        "font-size": "0.8em",
+                        "padding": "0.8em",
+                        "padding-left": "var(--block-spacing-horizontal)",
+                        "margin-top": 0
+                    }}>
+                        Click to update
+                    </footer>
+                </article>
+            </Show>
+        </div >
     );
 };
