@@ -46,7 +46,7 @@ export const Footer: Component = () => {
     const footerClasses: any = {
         pointer: true,
         animate__animated: true,
-        animate__zoomIn: true,
+        animate__bounceInUp: true,
     };
 
     const activityClasses: any = {
