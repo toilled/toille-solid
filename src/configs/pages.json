@@ -4,6 +4,7 @@
     "title": "Home",
     "body": [
       "This is my home page for testing ideas built using Solid JS. This may change at times as I experiment with ideas I have.",
+      "Click around and see what things I'm experimenting with. I'll add things from time to time.",
       "The source code for this site is available on <a href=\"https://github.com/toilled/toille-solid\" target=\"_blank\">this GitHub repository</a>."
     ]
   },
@@ -12,7 +13,7 @@
     "title": "About Me",
     "body": [
       "I am a BSc (Hons) graduate who has been confident working with computers in some way for most of my life.",
-      "I primarily use PHP but am able to use JavaScript at times."
+      "I have around 13 years experience in software/web development primarily using PHP but also JavaScript at times."
     ]
   },
   {
