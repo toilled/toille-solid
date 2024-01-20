@@ -2,10 +2,11 @@ import { Component, createSignal } from "solid-js";
 
 interface TitleProps {
   title: string,
-  subtitle: string
+  subtitle: string,
+  setSecret: (secret: boolean) => void;
 };
 
-export const Title: Component<TitleProps> = ({ title, subtitle }: TitleProps) => {
+export const Title: Component<TitleProps> = ({ title, subtitle, setSecret }: TitleProps) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
@@ -30,7 +31,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle }: TitleProps) =>
   };
 
   return (
-    <ul classList={titleClasses}>
+    <ul classList={titleClasses} onclick={() => { setSecret(true) }}>
       <li>
         <hgroup>
           <h1
