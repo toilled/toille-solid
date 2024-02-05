@@ -44,7 +44,6 @@ export const Footer: Component = () => {
     };
 
     const footerClasses: any = {
-        pointer: true,
         animate__animated: true,
         animate__bounceInUp: true,
     };
@@ -66,7 +65,7 @@ export const Footer: Component = () => {
     }
 
     return (
-        <div classList={footerClasses} onclick={newSuggestion}>
+        <div classList={footerClasses} onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
             <Show when={activity()} fallback={<article aria-busy="true"><header /></article>}>
                 <article
                     title="Click for a new suggestion"

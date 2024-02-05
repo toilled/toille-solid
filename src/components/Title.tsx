@@ -27,7 +27,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle, setSecret }: Tit
   const titleClasses: any = {
     animate__animated: true,
     animate__fadeInLeft: true,
-    pointer: true,
+    question: true,
   };
 
   return (
