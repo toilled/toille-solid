@@ -13,18 +13,17 @@ export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
   };
 
   const headingClasses: any = {
-    marginless: true,
     title: true,
   };
 
   return (
-    <article classList={contentClasses}>
+    <main classList={contentClasses}>
       <header>
         <h2 classList={headingClasses}>{page().title}</h2>
       </header>
       {page().body.map((paragraph, index) => {
         return <Paragraph paragraph={paragraph} last={index + 1 === page().body.length} />;
       })}
-    </article>
+    </main>
   );
 };
