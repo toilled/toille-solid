@@ -65,7 +65,7 @@ export const Footer: Component = () => {
     }
 
     return (
-        <div classList={footerClasses} onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
+        <footer classList={footerClasses} onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
             <Show when={activity()} fallback={<article aria-busy="true"><header /></article>}>
                 <article
                     title="Click for a new suggestion"
@@ -99,6 +99,6 @@ export const Footer: Component = () => {
                     </footer>
                 </article>
             </Show>
-        </div >
+        </footer >
     );
 };
