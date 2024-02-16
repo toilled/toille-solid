@@ -32,8 +32,6 @@ export const Footer: Component = () => {
                 <footer style={{
                     "font-style": "oblique",
                     "font-size": "0.8em",
-                    "padding": "0.8em",
-                    "padding-left": "var(--block-spacing-horizontal)",
                     "margin-top": 0,
                     "z-index": 1
                 }}>
