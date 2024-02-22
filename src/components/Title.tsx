@@ -7,7 +7,7 @@ interface TitleProps {
   setJoke: (joke: boolean) => void;
 };
 
-export const Title: Component<TitleProps> = ({ title, subtitle, setActivity: setActivity, setJoke: setJoke }: TitleProps) => {
+export const Title: Component<TitleProps> = ({ title, subtitle, setActivity, setJoke }: TitleProps) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
