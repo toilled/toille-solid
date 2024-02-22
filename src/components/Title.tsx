@@ -3,10 +3,11 @@ import { Component, createSignal } from "solid-js";
 interface TitleProps {
   title: string,
   subtitle: string,
-  setSecret: (secret: boolean) => void;
+  setActivity: (activity: boolean) => void;
+  setJoke: (joke: boolean) => void;
 };
 
-export const Title: Component<TitleProps> = ({ title, subtitle, setSecret }: TitleProps) => {
+export const Title: Component<TitleProps> = ({ title, subtitle, setActivity: setActivity, setJoke: setJoke }: TitleProps) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
@@ -27,28 +28,29 @@ export const Title: Component<TitleProps> = ({ title, subtitle, setSecret }: Tit
   const titleClasses: any = {
     animate__animated: true,
     animate__fadeInLeft: true,
-    question: true,
   };
 
   return (
-    <ul classList={titleClasses} onclick={() => { setSecret(true) }}>
+    <ul classList={titleClasses}>
       <li>
         <hgroup>
           <h1
             classList={{
               title: true,
               animate__animated: true,
-              animate__heartBeat: titleAnimate() === true
+              animate__heartBeat: titleAnimate() === true,
+              question: true,
             }}
-            onclick={animateTitle}
+            onclick={() => { animateTitle(); setActivity(true) }}
           >{title}</h1>
           <h2
             classList={{
               title: true,
               animate__animated: true,
-              animate__heartBeat: subtitleAnimate() === true
+              animate__heartBeat: subtitleAnimate() === true,
+              question: true,
             }}
-            onclick={animateSubtitle}
+            onclick={() => { animateSubtitle(); setJoke(true) }}
           >{subtitle}</h2>
         </hgroup>
       </li>
