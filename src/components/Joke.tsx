@@ -1,7 +1,7 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
 
 export const Joke: Component = () => {
-    const fetchJoke = async () => (await fetch('https://v2.jokeapi.dev/joke/Programming,Dark,Pun?blacklistFlags=racist&type=single')).json();
+    const fetchJoke = async () => (await fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } })).json();
     const [joke, { refetch }] = createResource(fetchJoke);
     const [hideHint, setHideHint] = createSignal(false);
     const [hintFade, setHintFade] = createSignal(false);
@@ -71,12 +71,8 @@ export const Joke: Component = () => {
                 >
                     <header>
                         <strong>
-                            Try this&nbsp;
-                            <Show when={!joke.loading} fallback={<>{joke().category.toLowerCase()}&nbsp;</>}>
-                                {joke().category.toLowerCase().replace("\n", "<br/>")}&nbsp;
-                            </Show>
-                            joke
-                        </strong> (The Bored API)
+                            Have a laugh!
+                        </strong>
                     </header>
                     <Show when={!joke.loading} fallback={fallback()}>
                         <p classList={jokeClasses}>
