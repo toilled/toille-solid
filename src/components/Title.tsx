@@ -4,10 +4,13 @@ interface TitleProps {
   title: string,
   subtitle: string,
   setActivity: (activity: boolean) => void;
+  joke: () => boolean;
   setJoke: (joke: boolean) => void;
+  actTop: () => boolean;
+  setActTop: (joke: boolean) => void;
 };
 
-export const Title: Component<TitleProps> = ({ title, subtitle, setActivity, setJoke }: TitleProps) => {
+export const Title: Component<TitleProps> = ({ title, subtitle, setActivity, joke, setJoke, actTop, setActTop }: TitleProps) => {
   const [titleAnimate, setTitleAnimate] = createSignal(false);
   const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
 
@@ -41,7 +44,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle, setActivity, set
               animate__heartBeat: titleAnimate() === true,
               question: true,
             }}
-            onclick={() => { animateTitle(); setActivity(true) }}
+            onclick={() => { animateTitle(); setActTop(actTop() ? true : !joke()); setActivity(true) }}
           >{title}</h1>
           <h2
             classList={{

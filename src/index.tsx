@@ -18,6 +18,7 @@ const root = document.getElementById('root');
 const [currentPage, setCurrentPage] = createSignal(pages[0]);
 const [activity, setActivity] = createSignal(false);
 const [joke, setJoke] = createSignal(false);
+const [actTop, setActTop] = createSignal(false);
 
 createEffect(() => {
   document.title = "Elliot | " + currentPage().name;
@@ -26,15 +27,26 @@ createEffect(() => {
 render(() => (
   <>
     <nav>
-      <Title title={titles.title} subtitle={titles.subtitle} setActivity={setActivity} setJoke={setJoke} />
+      <Title
+        title={titles.title}
+        subtitle={titles.subtitle}
+        setActivity={setActivity}
+        joke={joke}
+        setJoke={setJoke}
+        actTop={actTop}
+        setActTop={setActTop}
+      />
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
     </nav>
     <PageContent page={currentPage} />
-    <Show when={activity()}>
+    <Show when={activity() && actTop()}>
       <Activity />
     </Show>
     <Show when={joke()}>
       <Joke />
+    </Show>
+    <Show when={activity() && !actTop()}>
+      <Activity />
     </Show>
   </>
 ), root!);
