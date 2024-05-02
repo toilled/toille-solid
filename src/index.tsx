@@ -8,11 +8,12 @@ import { createSignal, createEffect, Show } from 'solid-js';
 import { Title } from "./components/Title";
 import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
+import { Hint } from './components/Hint';
 import { Activity } from './components/Activity';
+import { Joke } from './components/Joke';
 
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';
-import { Joke } from './components/Joke';
 
 const root = document.getElementById('root');
 const [currentPage, setCurrentPage] = createSignal(pages[0]);
@@ -39,6 +40,7 @@ render(() => (
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
     </nav>
     <PageContent page={currentPage} />
+    <Hint activity={activity} joke={joke} />
     <Show when={activity() && actTop()}>
       <Activity />
     </Show>
