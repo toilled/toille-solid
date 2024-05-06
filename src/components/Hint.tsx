@@ -26,7 +26,7 @@ export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
 
         return (
             <footer classList={animationClasses}>
-                <article>I won't what happens when you click things?</article>
+                <article>I wonder what happens when you click things?</article>
             </footer>
         );
     };
@@ -34,7 +34,7 @@ export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
     return (
         <Show when={!activity() && !joke()} fallback={fallback()}>
             <footer classList={animationClasses}>
-                <article>I wonder what happens when you click things like titles?</article>
+                <article>I wonder what happens when you click things?</article>
             </footer>
         </Show>
     )
