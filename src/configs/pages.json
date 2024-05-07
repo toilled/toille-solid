@@ -4,7 +4,6 @@
     "title": "Home",
     "body": [
       "This is my home page for testing ideas built using Solid JS. This may change at times as I experiment with ideas I have.",
-      "Click around and see what things I'm experimenting with. I'll add things from time to time.",
       "The source code for this site is available on <a href=\"https://github.com/toilled/toille-solid\" target=\"_blank\">this GitHub repository</a>."
     ]
   },
