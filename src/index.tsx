@@ -35,6 +35,7 @@ render(() => (
         joke={joke}
         setJoke={setJoke}
         actTop={actTop}
+        activity={activity}
         setActTop={setActTop}
       />
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
