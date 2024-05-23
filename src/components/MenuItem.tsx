@@ -13,7 +13,7 @@ export const MenuItem: Component<MenuItemProps> = ({ setCurrentPage, page, key, 
     return (
         <li>
             <a
-                onClick={() => { setCurrentPage(page); setActiveItem(key) }}
+                onMouseDown={() => { setCurrentPage(page); setActiveItem(key) }}
                 classList={{
                     pointer: true,
                     animate__animated: true,
