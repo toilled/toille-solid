@@ -45,7 +45,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
               animate__heartBeat: titleAnimate() === true,
               question: true,
             }}
-            onclick={() => { animateTitle(); setActTop(!joke()); setActivity(!activity()) }}
+            onMouseDown={() => { animateTitle(); setActTop(!joke()); setActivity(!activity()) }}
           >{title}</h1>
           <h2
             classList={{
@@ -54,7 +54,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
               animate__heartBeat: subtitleAnimate() === true,
               question: true,
             }}
-            onclick={() => { animateSubtitle(); setActTop(activity()); setJoke(!joke()) }}
+            onMouseDown={() => { animateSubtitle(); setActTop(activity()); setJoke(!joke()) }}
           >{subtitle}</h2>
         </hgroup>
       </li>
