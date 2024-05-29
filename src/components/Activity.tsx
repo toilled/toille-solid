@@ -84,18 +84,18 @@ export const Activity: Component = () => {
                         </p>
                     </Show>
                 </article>
-            </Show>
 
-            <Show when={!hideHint()} fallback={hintFallback()}>
-                <article style={{ "padding-top": 0, "margin-top": 0 }}>
-                    <footer style={{
-                        "font-style": "oblique",
-                        "font-size": "0.8em",
-                        "margin-top": 0
-                    }}>
-                        Click to update
-                    </footer>
-                </article>
+                <Show when={!hideHint()} fallback={hintFallback()}>
+                    <article style={{ "padding-top": 0, "margin-top": 0 }}>
+                        <footer style={{
+                            "font-style": "oblique",
+                            "font-size": "0.8em",
+                            "margin-top": 0
+                        }}>
+                            Click to update
+                        </footer>
+                    </article>
+                </Show>
             </Show>
         </footer >
     );

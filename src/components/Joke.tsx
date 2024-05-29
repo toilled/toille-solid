@@ -64,7 +64,7 @@ export const Joke: Component = () => {
 
     return (
         <footer classList={footerClasses} onclick={newSuggestion} style={{ cursor: joke.loading ? 'progress' : '' }}>
-            <Show when={joke()} fallback={<article aria-busy="true"><header /></article>}>
+            <Show when={joke()} fallback={<article aria-busy="true" style={{ "margin-bottom": 0 }}>icanhazdadjoke.com might be dowm.</article>}>
                 <article
                     title="Click for a new suggestion"
                     style={{ "margin-bottom": 0 }}
@@ -80,18 +80,18 @@ export const Joke: Component = () => {
                         </p>
                     </Show>
                 </article>
-            </Show>
 
-            <Show when={!hideHint()} fallback={hintFallback()}>
-                <article style={{ "padding-top": 0, "margin-top": 0 }}>
-                    <footer style={{
-                        "font-style": "oblique",
-                        "font-size": "0.8em",
-                        "margin-top": 0
-                    }}>
-                        Click to update
-                    </footer>
-                </article>
+                <Show when={!hideHint()} fallback={hintFallback()}>
+                    <article style={{ "padding-top": 0, "margin-top": 0 }}>
+                        <footer style={{
+                            "font-style": "oblique",
+                            "font-size": "0.8em",
+                            "margin-top": 0
+                        }}>
+                            Click to update
+                        </footer>
+                    </article>
+                </Show>
             </Show>
         </footer >
     );
