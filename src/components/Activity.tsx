@@ -1,7 +1,7 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
 
 export const Activity: Component = () => {
-    const fetchActivity = async () => (await fetch('https://www.boredapi.com/api/activity/')).json();
+    const fetchActivity = async () => (await fetch('https://bored.api.lewagon.com/api/activity')).json();
     const [activity, { refetch }] = createResource(fetchActivity);
     const [hideHint, setHideHint] = createSignal(false);
     const [hintFade, setHintFade] = createSignal(false);
