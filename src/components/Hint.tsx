@@ -6,7 +6,8 @@ interface HintProps {
 }
 
 export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
-    const [hintFade, setHintFade] = createSignal(false);
+    const [hintFade, setHintFade] = createSignal(true);
+    const [showHint, setShowHint] = createSignal(false);
 
     const animationClasses: any = {
         animate__animated: true,
@@ -20,22 +21,33 @@ export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
             hide: hintFade(),
         };
 
-        setTimeout(() => {
-            setHintFade(true);
-        }, 400);
-
         return (
             <footer classList={animationClasses}>
-                <article>I wonder what happens when you click things?</article>
+                <article>The titles might be clickable...</article>
             </footer>
         );
     };
 
+    setTimeout(() => {
+        setHintFade(false);
+        setShowHint(true);
+    }, 3000);
+
+    setTimeout(() => {
+        setShowHint(false);
+    }, 5000);
+
+    setTimeout(() => {
+        setHintFade(true);
+    }, 5400);
+
     return (
-        <Show when={!activity() && !joke()} fallback={fallback()}>
-            <footer classList={animationClasses}>
-                <article>I wonder what happens when you click things?</article>
-            </footer>
+        <Show when={!activity() && !joke()}>
+            <Show when={showHint()} fallback={fallback()}>
+                <footer classList={animationClasses}>
+                    <article>The titles might be clickable...</article>
+                </footer>
+            </Show>
         </Show>
     )
 }
