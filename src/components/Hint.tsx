@@ -1,4 +1,4 @@
-import { Component, Show, createResource, createSignal } from "solid-js";
+import { Component, Show, createSignal } from "solid-js";
 
 interface HintProps {
     activity: () => boolean;
