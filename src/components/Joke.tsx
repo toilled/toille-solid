@@ -58,7 +58,7 @@ export const Joke: Component = () => {
             setHideHint(true);
             setTimeout(() => {
                 setHintFade(true);
-            }, 600);
+            }, 400);
         }
     }
 

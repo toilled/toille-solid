@@ -33,7 +33,7 @@ export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
           <Show when={showHint()}>
             <span
               classList={{ animate__animated: true, animate__zoomIn: true, }}
-              style="font-weight: 100;font-style: italic;"
+              style="font-weight: 100;font-style: italic;font-size:0.6em;vertical-align: middle;"
             > - Nothing here</span>
           </Show>
         </h2>
