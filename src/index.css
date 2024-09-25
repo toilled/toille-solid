@@ -5,20 +5,20 @@
 
  /* Hide scrollbar for IE, Edge and Firefox */
  html {
+   /* Firefox */
    -ms-overflow-style: none;
    /* IE and Edge */
    scrollbar-width: none;
-   /* Firefox */
+
+   user-select: none;
  }
 
  .pointer {
    cursor: pointer;
-   user-select: none;
  }
 
  .question {
    cursor: help;
-   user-select: none;
  }
 
  .marginless {
@@ -27,9 +27,9 @@
 
  .selected {
    font-weight: bold;
-   text-shadow: 2px 2px 2px rgb(0 0 0 / 0.2);
  }
 
+ .selected,
  .title {
    text-shadow: 2px 2px 2px rgb(0 0 0 / 0.2);
  }
