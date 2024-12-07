@@ -8,6 +8,7 @@ import { createSignal, createEffect, Show } from 'solid-js';
 import { Title } from "./components/Title";
 import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
+import { Checker } from "./components/Checker";
 import { Hint } from './components/Hint';
 import { Activity } from './components/Activity';
 import { Joke } from './components/Joke';
@@ -17,6 +18,7 @@ import titles from './configs/titles.json';
 
 const root = document.getElementById('root');
 const [currentPage, setCurrentPage] = createSignal(pages[0]);
+const [checker, setChecker] = createSignal(false);
 const [activity, setActivity] = createSignal(false);
 const [joke, setJoke] = createSignal(false);
 const [actTop, setActTop] = createSignal(false);
@@ -41,7 +43,12 @@ render(() => (
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
     </nav>
     <PageContent page={currentPage} />
-    <Hint activity={activity} joke={joke} />
+    <div onClick={() => setChecker(true)}>
+      <Hint activity={activity} joke={joke} />
+    </div>
+    <Show when={checker()}>
+      <Checker />
+    </Show>
     <Show when={activity() && actTop()}>
       <Activity />
     </Show>
