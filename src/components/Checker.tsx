@@ -3,17 +3,32 @@ import { Component, createEffect, createSignal } from "solid-js";
 export const Checker: Component = () => {
   const [count, setCount] = createSignal(0);
   let currentTime = new Date().getTime()
+  const [limitTime, setLimitTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
   const [soberTime, setSoberTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
 
   createEffect(() => {
     if (count() == 0) {
       let currentTime = new Date().getTime()
+      setLimitTime(new Date(currentTime).toLocaleTimeString())
       setSoberTime(new Date(currentTime).toLocaleTimeString())
     } else {
       let currentTime = new Date().getTime();
+      setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
       setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
     }
   });
+
+  setInterval(() => {
+    if (count() == 0) {
+      let currentTime = new Date().getTime()
+      setLimitTime(new Date(currentTime).toLocaleTimeString())
+      setSoberTime(new Date(currentTime).toLocaleTimeString())
+    } else {
+      let currentTime = new Date().getTime();
+      setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
+      setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
+    }
+  }, 1000);
 
   const footerClasses: any = {
     animate__animated: true,
@@ -22,12 +37,33 @@ export const Checker: Component = () => {
 
   return (
     <article classList={footerClasses}>
-      <a onClick={() => setCount(count() + 1)}>
-        Units: {count()}
-      </a>
-      <footer>
-        You'll be sober  {soberTime()}
-      </footer>
+      <header>
+        Alcohol Checker
+      </header>
+      <section class="grid">
+        <button onClick={() => setCount(count() + 1)} class="outline">
+          Add
+        </button>
+        <button onClick={() => count() == 0 ? setCount(0) : setCount(count() - 1)} class="outline">
+          Subtract
+        </button>
+      </section>
+      <table>
+        <thead>
+          <tr>
+            <th>Units</th>
+            <th>Borderline time</th>
+            <th>Safe time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{count()}</td>
+            <td>{limitTime()}</td>
+            <td>{soberTime()}</td>
+          </tr>
+        </tbody>
+      </table>
     </article>
   );
 }
