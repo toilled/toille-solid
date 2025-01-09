@@ -12,17 +12,18 @@ interface MenuItemProps {
 export const MenuItem: Component<MenuItemProps> = ({ setCurrentPage, page, key, setActiveItem, activeItem }: MenuItemProps) => {
     return (
         <li>
-            <a
+            <button
                 onMouseDown={() => { setCurrentPage(page); setActiveItem(key) }}
                 classList={{
-                    pointer: true,
+                    outline: true,
                     animate__animated: true,
                     animate__tada: activeItem() === key,
-                    selected: activeItem() === key
+                    // contrast: activeItem() === key,
+                    contrast: activeItem() !== key,
                 }}
             >
                 {page.name}
-            </a>
+            </button>
         </li>
     );
 };
