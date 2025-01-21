@@ -33,12 +33,10 @@ render(() => (
       <Title
         title={titles.title}
         subtitle={titles.subtitle}
+        activity={activity}
         setActivity={setActivity}
         joke={joke}
         setJoke={setJoke}
-        actTop={actTop}
-        activity={activity}
-        setActTop={setActTop}
       />
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
     </nav>
@@ -49,14 +47,11 @@ render(() => (
     <Show when={checker()}>
       <Checker />
     </Show>
-    <Show when={activity() && actTop()}>
+    <Show when={activity()}>
       <Activity />
     </Show>
     <Show when={joke()}>
       <Joke />
-    </Show>
-    <Show when={activity() && !actTop()}>
-      <Activity />
     </Show>
   </>
 ), root!);

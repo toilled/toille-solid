@@ -48,7 +48,7 @@ export const Checker: Component = () => {
           Subtract
         </button>
       </section>
-      <table>
+      <table class="marginless">
         <thead>
           <tr>
             <th>Units</th>
