@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import { Page } from "../interfaces/Page";
 import { MenuItem } from "./MenuItem";
 
@@ -17,9 +17,9 @@ export const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps)
 
   return (
     <ul classList={classes}>
-      {pages.map((page, key) => {
-        return <MenuItem setCurrentPage={setCurrentPage} page={page} key={key} setActiveItem={setActiveItem} activeItem={activeItem} />
-      })}
+      <For each={pages}>{
+        (page, key) => <MenuItem setCurrentPage={setCurrentPage} page={page} key={key()} setActiveItem={setActiveItem} activeItem={activeItem} />
+      }</For>
     </ul>
   );
 };

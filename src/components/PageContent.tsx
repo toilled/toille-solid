@@ -1,4 +1,4 @@
-import { Component, Show, createSignal } from "solid-js";
+import { Component, For, Show, createSignal } from "solid-js";
 import { Page } from "../interfaces/Page";
 import { Paragraph } from "./Paragraph";
 
@@ -38,9 +38,9 @@ export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
           </Show>
         </h2>
       </header>
-      {page().body.map((paragraph, index) => {
-        return <Paragraph paragraph={paragraph} last={index + 1 === page().body.length} />;
-      })}
+      <For each={page().body}>{
+        (paragraph, index) => <Paragraph paragraph={paragraph} last={index() + 1 === page().body.length} />
+      }</For>
     </main>
   );
 };
