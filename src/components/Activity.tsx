@@ -28,7 +28,7 @@ export const Activity: Component = () => {
         };
 
         return (
-            <article classList={classes} style="padding-top: 0; margin-top: 0">
+            <article classList={classes} style="padding-top: 0; margin-top: 0; margin-bottom: 0">
                 <footer style={{
                     "font-style": "oblique",
                     "font-size": "0.8em",
@@ -86,7 +86,7 @@ export const Activity: Component = () => {
                 </article>
 
                 <Show when={!hideHint()} fallback={hintFallback()}>
-                    <article style={{ "padding-top": 0, "margin-top": 0 }}>
+                    <article style={{ "padding-top": 0, "margin-top": 0, "margin-bottom": 0 }}>
                         <footer style={{
                             "font-style": "oblique",
                             "font-size": "0.8em",

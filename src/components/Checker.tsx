@@ -36,34 +36,36 @@ export const Checker: Component = () => {
   };
 
   return (
-    <article classList={footerClasses}>
-      <header>
-        Alcohol Checker
-      </header>
-      <section class="grid">
-        <button onClick={() => setCount(count() + 1)} class="outline">
-          Add
-        </button>
-        <button onClick={() => count() == 0 ? setCount(0) : setCount(count() - 1)} class="outline">
-          Subtract
-        </button>
-      </section>
-      <table class="marginless">
-        <thead>
-          <tr>
-            <th>Units</th>
-            <th>Borderline time</th>
-            <th>Safe time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{count()}</td>
-            <td>{limitTime()}</td>
-            <td>{soberTime()}</td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+    <footer classList={footerClasses}>
+      <article style={{ "margin-bottom": 0 }}>
+        <header>
+          Alcohol Checker
+        </header>
+        <section class="grid">
+          <button onClick={() => setCount(count() + 1)} class="outline">
+            Add
+          </button>
+          <button onClick={() => count() == 0 ? setCount(0) : setCount(count() - 1)} class="outline">
+            Subtract
+          </button>
+        </section>
+        <table class="marginless">
+          <thead>
+            <tr>
+              <th>Units</th>
+              <th>Borderline time</th>
+              <th>Safe time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{count()}</td>
+              <td>{limitTime()}</td>
+              <td>{soberTime()}</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </footer>
   );
 }
