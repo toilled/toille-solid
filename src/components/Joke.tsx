@@ -41,11 +41,6 @@ export const Joke: Component = () => {
         );
     };
 
-    const footerClasses: any = {
-        animate__animated: true,
-        animate__bounceInUp: true,
-    };
-
     const jokeClasses: any = {
         marginless: true,
         animate__animated: true,
@@ -63,7 +58,7 @@ export const Joke: Component = () => {
     }
 
     return (
-        <footer classList={footerClasses} onclick={newSuggestion} style={{ cursor: joke.loading ? 'progress' : '' }}>
+        <footer onclick={newSuggestion} style={{ cursor: joke.loading ? 'progress' : '' }}>
             <Show when={joke()} fallback={<article aria-busy="true" style={{ "margin-bottom": 0 }}>icanhazdadjoke.com might be dowm.</article>}>
                 <article
                     title="Click for a new suggestion"

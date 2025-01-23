@@ -15,6 +15,7 @@ import { Joke } from './components/Joke';
 
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';
+import { Transition } from "solid-transition-group"
 
 const root = document.getElementById('root');
 const [currentPage, setCurrentPage] = createSignal(pages[0]);
@@ -42,16 +43,61 @@ render(() => (
     </nav>
     <PageContent page={currentPage} />
     <div onClick={() => setChecker(true)}>
-      <Hint activity={activity} joke={joke} />
+      <Hint checker={checker} activity={activity} joke={joke} />
     </div>
-    <Show when={checker()}>
-      <Checker />
-    </Show>
-    <Show when={activity()}>
-      <Activity />
-    </Show>
-    <Show when={joke()}>
-      <Joke />
-    </Show>
+    <Transition
+      onEnter={(el, done) => {
+        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+      onExit={(el, done) => {
+        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+    >
+      <Show when={checker()}>
+        <Checker />
+      </Show>
+    </Transition>
+    <Transition
+      onEnter={(el, done) => {
+        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+      onExit={(el, done) => {
+        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+    >
+      <Show when={activity()}>
+        <Activity />
+      </Show>
+    </Transition>
+    <Transition
+      onEnter={(el, done) => {
+        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+      onExit={(el, done) => {
+        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+          duration: 600
+        });
+        a.finished.then(done);
+      }}
+    >
+      <Show when={joke()}>
+        <Joke />
+      </Show>
+    </Transition>
   </>
 ), root!);

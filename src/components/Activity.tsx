@@ -41,11 +41,6 @@ export const Activity: Component = () => {
         );
     };
 
-    const footerClasses: any = {
-        animate__animated: true,
-        animate__bounceInUp: true,
-    };
-
     const activityClasses: any = {
         marginless: true,
         animate__animated: true,
@@ -63,7 +58,7 @@ export const Activity: Component = () => {
     }
 
     return (
-        <footer classList={footerClasses} onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
+        <footer onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
             <Show when={activity()} fallback={<article aria-busy="true" style={{ "margin-bottom": 0 }}>The Bored API might be dowm.</article>}>
                 <article
                     title="Click for a new suggestion"

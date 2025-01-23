@@ -2,10 +2,11 @@ import { Component, Show, createSignal } from "solid-js";
 
 interface HintProps {
     activity: () => boolean;
+    checker: () => boolean;
     joke: () => boolean;
 }
 
-export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
+export const Hint: Component<HintProps> = ({ activity, checker, joke }: HintProps) => {
     const [hintFade, setHintFade] = createSignal(true);
     const [showHint, setShowHint] = createSignal(false);
 
@@ -42,7 +43,7 @@ export const Hint: Component<HintProps> = ({ activity, joke }: HintProps) => {
     }, 5400);
 
     return (
-        <Show when={!activity() && !joke()}>
+        <Show when={!activity() && !checker() && !joke()}>
             <Show when={showHint()} fallback={fallback()}>
                 <footer classList={animationClasses}>
                     <article>The titles might be clickable...</article>

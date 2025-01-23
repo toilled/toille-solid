@@ -30,13 +30,8 @@ export const Checker: Component = () => {
     }
   }, 1000);
 
-  const footerClasses: any = {
-    animate__animated: true,
-    animate__bounceInUp: true,
-  };
-
   return (
-    <footer classList={footerClasses}>
+    <footer>
       <article style={{ "margin-bottom": 0 }}>
         <header>
           Alcohol Checker
