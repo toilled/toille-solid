@@ -28,6 +28,18 @@ createEffect(() => {
   document.title = "Elliot | " + currentPage().name;
 });
 
+const fadeIn = (el: Element, done: () => void): void => {
+  const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+    duration: 600
+  });
+  a.finished.then(done);
+};
+const fadeOut = (el: Element, done: () => void): void => {
+  const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+    duration: 600
+  });
+  a.finished.then(done);
+};
 render(() => (
   <>
     <nav>
@@ -45,56 +57,17 @@ render(() => (
     <div onClick={() => setChecker(true)}>
       <Hint checker={checker} activity={activity} joke={joke} />
     </div>
-    <Transition
-      onEnter={(el, done) => {
-        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-      onExit={(el, done) => {
-        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-    >
+    <Transition onEnter={fadeIn} onExit={fadeOut} >
       <Show when={checker()}>
         <Checker />
       </Show>
     </Transition>
-    <Transition
-      onEnter={(el, done) => {
-        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-      onExit={(el, done) => {
-        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-    >
+    <Transition onEnter={fadeIn} onExit={fadeOut} >
       <Show when={activity()}>
         <Activity />
       </Show>
     </Transition>
-    <Transition
-      onEnter={(el, done) => {
-        const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-      onExit={(el, done) => {
-        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-          duration: 600
-        });
-        a.finished.then(done);
-      }}
-    >
+    <Transition onEnter={fadeIn} onExit={fadeOut} >
       <Show when={joke()}>
         <Joke />
       </Show>
