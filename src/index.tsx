@@ -9,7 +9,6 @@ import { Title } from "./components/Title";
 import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
 import { Checker } from "./components/Checker";
-import { Hint } from './components/Hint';
 import { Activity } from './components/Activity';
 import { Joke } from './components/Joke';
 
@@ -22,11 +21,19 @@ const [currentPage, setCurrentPage] = createSignal(pages[0]);
 const [checker, setChecker] = createSignal(false);
 const [activity, setActivity] = createSignal(false);
 const [joke, setJoke] = createSignal(false);
-const [actTop, setActTop] = createSignal(false);
+const [showHint, setShowHint] = createSignal(false);
 
 createEffect(() => {
   document.title = "Elliot | " + currentPage().name;
 });
+
+setTimeout(() => {
+  setShowHint(true);
+}, 3000);
+
+setTimeout(() => {
+  setShowHint(false);
+}, 5000);
 
 const fadeIn = (el: Element, done: () => void): void => {
   const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
@@ -54,9 +61,13 @@ render(() => (
       <Menu pages={pages} setCurrentPage={setCurrentPage} />
     </nav>
     <PageContent page={currentPage} />
-    <div onClick={() => setChecker(true)}>
-      <Hint checker={checker} activity={activity} joke={joke} />
-    </div>
+    <Transition onEnter={fadeIn} onExit={fadeOut} >
+      <Show when={!activity() && !checker() && !joke() && showHint()}>
+        <footer onClick={() => setChecker(true)}>
+          <article>The titles might be clickable...</article>
+        </footer>
+      </Show>
+    </Transition>
     <Transition onEnter={fadeIn} onExit={fadeOut} >
       <Show when={checker()}>
         <Checker />
