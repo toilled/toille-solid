@@ -13,6 +13,7 @@
    user-select: none;
 
    background: radial-gradient(ellipse at bottom, #3b4775 0%, #090a0f 100%);
+   background-attachment: fixed;
    height: auto;
    min-height: 100%;
  }

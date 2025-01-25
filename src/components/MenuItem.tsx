@@ -1,29 +1,17 @@
 import { Component } from "solid-js";
 import { Page } from "../interfaces/Page";
+import { A } from "@solidjs/router";
 
 interface MenuItemProps {
-    setCurrentPage: (page: Page) => void;
     page: Page;
-    key: number;
-    setActiveItem: (activeItem: number) => void;
-    activeItem: () => number;
 };
 
-export const MenuItem: Component<MenuItemProps> = ({ setCurrentPage, page, key, setActiveItem, activeItem }: MenuItemProps) => {
+export const MenuItem: Component<MenuItemProps> = ({ page }: MenuItemProps) => {
     return (
         <li>
-            <button
-                onMouseDown={() => { setCurrentPage(page); setActiveItem(key) }}
-                classList={{
-                    outline: true,
-                    animate__animated: true,
-                    animate__tada: activeItem() === key,
-                    // contrast: activeItem() === key,
-                    contrast: activeItem() !== key,
-                }}
-            >
+            <A href={`/${page.name}`}>
                 {page.name}
-            </button>
+            </A>
         </li>
     );
 };
