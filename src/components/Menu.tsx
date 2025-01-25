@@ -4,12 +4,9 @@ import { MenuItem } from "./MenuItem";
 
 interface MenuProps {
   pages: Page[];
-  setCurrentPage: (page: Page) => void;
 };
 
-export const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps) => {
-  const [activeItem, setActiveItem] = createSignal(0);
-
+export const Menu: Component<MenuProps> = ({ pages }: MenuProps) => {
   const classes: any = {
     animate__animated: true,
     animate__fadeInRight: true,
@@ -18,7 +15,7 @@ export const Menu: Component<MenuProps> = ({ pages, setCurrentPage }: MenuProps)
   return (
     <ul classList={classes}>
       <For each={pages}>{
-        (page, key) => <MenuItem setCurrentPage={setCurrentPage} page={page} key={key()} setActiveItem={setActiveItem} activeItem={activeItem} />
+        (page, key) => <MenuItem page={page} />
       }</For>
     </ul>
   );

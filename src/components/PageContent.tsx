@@ -1,14 +1,17 @@
-import { Component, For, Show, createSignal } from "solid-js";
-import { Page } from "../interfaces/Page";
+import { Component, For, Show, createEffect, createSignal } from "solid-js";
+import pages from '../configs/pages.json';
 import { Paragraph } from "./Paragraph";
 import { Transition } from "solid-transition-group";
+import { useParams } from "@solidjs/router";
 
-interface PageProps {
-  page: () => Page
-};
-
-export const PageContent: Component<PageProps> = ({ page }: PageProps) => {
+export const PageContent: Component = () => {
   const [showHint, setShowHint] = createSignal(false);
+  const [page, setPage] = createSignal(pages[0]);
+
+  createEffect(() => {
+    let currentPage = pages.find((page) => page.name === useParams().name);
+    setPage(currentPage || pages[0]);
+  });
 
   const contentClasses: any = {
     animate__animated: true,

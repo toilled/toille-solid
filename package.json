@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@picocss/pico": "^2",
+    "@solidjs/router": "^0.15.3",
     "animate.css": "^4.1.1",
     "solid-js": "^1.7.6",
     "solid-transition-group": "^0.2.3"
