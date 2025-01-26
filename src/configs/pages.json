@@ -1,6 +1,7 @@
 [
   {
     "name": "Home",
+    "link": "/",
     "title": "Home",
     "body": [
       "This website serves as a home page for testing various ideas developed using Solid JS. The content presented here may undergo periodic changes as I continue to experiment with different concepts and functionalities.",
@@ -10,6 +11,7 @@
   },
   {
     "name": "About",
+    "link": "/about",
     "title": "About Me",
     "body": [
       "I am a BSc (Hons) graduate who has been confident working with computers in some way for most of my life.",
@@ -20,6 +22,7 @@
   },
   {
     "name": "Interests",
+    "link": "/interests",
     "title": "My Interests",
     "body": [
       "In addition to my professional commitments, I engage in developing new coding ideas as a hobby during my spare time. This pursuit not only allows me to explore innovative concepts but also enables me to stay informed about emerging programming languages and technologies.",

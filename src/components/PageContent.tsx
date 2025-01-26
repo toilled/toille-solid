@@ -9,7 +9,7 @@ export const PageContent: Component = () => {
   const [page, setPage] = createSignal(pages[0]);
 
   createEffect(() => {
-    let currentPage = pages.find((page) => page.name === useParams().name);
+    let currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
     setPage(currentPage || pages[0]);
   });
 
@@ -34,6 +34,38 @@ export const PageContent: Component = () => {
     });
     a.finished.then(done);
   };
+
+  if (useParams().incorrect != undefined) {
+    const incorrect = useParams().incorrect;
+
+    const contentClasses: any = {
+      animate__animated: true,
+      animate__shakeX: true,
+    };
+
+    return (
+      <main classList={contentClasses}>
+        <header>
+          <h2
+            classList={headingClasses}
+            onMouseDown={() => {
+              setShowHint(true);
+              setTimeout(() => {
+                setShowHint(false);
+              }, 500);
+            }}
+          >404 - Page not found
+            <Transition onEnter={fadeIn} onExit={fadeOut} >
+              <Show when={showHint()}>
+                <span style="font-weight: 100;font-style: italic;font-size:0.6em;vertical-align: middle;"> - Nothing here</span>
+              </Show>
+            </Transition>
+          </h2>
+        </header>
+        <Paragraph paragraph={`The path <strong>${incorrect}</strong> does not exist!`} last={true} />
+      </main >
+    );
+  }
 
   return (
     <main classList={contentClasses}>

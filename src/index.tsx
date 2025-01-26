@@ -90,14 +90,14 @@ const Layout = (props: { children: any; }) => {
 
 const root = document.getElementById('root');
 const filters: MatchFilters = {
-  name: ["Home", "About", "Interests"], // allow enum values
+  name: ["home", "about", "interests"], // allow enum values
 };
 
 render(
   () => (
     <Router root={Layout}>
       <Route path="/:name?" component={PageContent} matchFilters={filters} />
-      <Route path="*paramName" component={PageContent} />
+      <Route path="*incorrect" component={PageContent} />
     </Router>
   ),
   root!
