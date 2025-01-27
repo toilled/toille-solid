@@ -6,7 +6,9 @@ interface ParagraphProps {
 };
 
 export const Paragraph: Component<ParagraphProps> = ({ paragraph, last }: ParagraphProps) => {
-    const paragraphClasses: any = {};
+    const paragraphClasses = {
+        marginless: false,
+    };
     if (last) {
         paragraphClasses.marginless = true;
     }

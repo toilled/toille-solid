@@ -4,7 +4,7 @@ import '@picocss/pico';
 import 'animate.css';
 import './index.css';
 
-import { createSignal, createEffect, Show, Component, JSX } from 'solid-js';
+import { createSignal, createEffect, Show, Component } from 'solid-js';
 import { Title } from "./components/Title";
 import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
@@ -15,17 +15,17 @@ import { Joke } from './components/Joke';
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';
 import { Transition } from "solid-transition-group"
-import { MatchFilters, Route, Router, RouteSectionProps } from '@solidjs/router';
+import { MatchFilters, Route, Router, RouteSectionProps, useParams } from '@solidjs/router';
 
 const Layout: Component<RouteSectionProps<unknown>> = props => {
-  const [currentPage, setCurrentPage] = createSignal(pages[0]);
   const [checker, setChecker] = createSignal(false);
   const [activity, setActivity] = createSignal(false);
   const [joke, setJoke] = createSignal(false);
   const [showHint, setShowHint] = createSignal(false);
 
   createEffect(() => {
-    document.title = "Elliot | " + currentPage().name;
+    const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
+    document.title = "Elliot | " + (currentPage || pages[0]).name;
   });
 
   setTimeout(() => {

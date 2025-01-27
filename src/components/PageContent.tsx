@@ -9,16 +9,16 @@ export const PageContent: Component = () => {
   const [page, setPage] = createSignal(pages[0]);
 
   createEffect(() => {
-    let currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
+    const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
     setPage(currentPage || pages[0]);
   });
 
-  const contentClasses: any = {
+  const contentClasses = {
     animate__animated: true,
     animate__zoomIn: true,
   };
 
-  const headingClasses: any = {
+  const headingClasses = {
     title: true,
   };
 
@@ -38,7 +38,7 @@ export const PageContent: Component = () => {
   if (useParams().incorrect != undefined) {
     const incorrect = useParams().incorrect;
 
-    const contentClasses: any = {
+    const contentClasses = {
       animate__animated: true,
       animate__shakeX: true,
     };
