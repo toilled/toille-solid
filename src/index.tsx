@@ -15,9 +15,9 @@ import { Joke } from './components/Joke';
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';
 import { Transition } from "solid-transition-group"
-import { MatchFilters, Route, Router } from '@solidjs/router';
+import { MatchFilters, Route, Router, RouteSectionProps } from '@solidjs/router';
 
-const Layout = (props: { children: any; }) => {
+const Layout: Component<RouteSectionProps<unknown>> = props => {
   const [currentPage, setCurrentPage] = createSignal(pages[0]);
   const [checker, setChecker] = createSignal(false);
   const [activity, setActivity] = createSignal(false);
