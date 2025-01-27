@@ -7,7 +7,7 @@ export const Activity: Component = () => {
     const [hintFade, setHintFade] = createSignal(false);
 
     const fallback = () => {
-        const fallbackClasses: any = {
+        const fallbackClasses = {
             marginless: true,
             animate__animated: true,
             animate__fadeOut: true,
@@ -21,7 +21,7 @@ export const Activity: Component = () => {
     };
 
     const hintFallback = () => {
-        const classes: any = {
+        const classes = {
             animate__animated: true,
             animate__rotateOutDownLeft: true,
             hide: hintFade(),
@@ -41,7 +41,7 @@ export const Activity: Component = () => {
         );
     };
 
-    const activityClasses: any = {
+    const activityClasses = {
         marginless: true,
         animate__animated: true,
         animate__fadeIn: true,

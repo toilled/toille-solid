@@ -2,17 +2,17 @@ import { Component, createEffect, createSignal } from "solid-js";
 
 export const Checker: Component = () => {
   const [count, setCount] = createSignal(0);
-  let currentTime = new Date().getTime()
+  const currentTime = new Date().getTime()
   const [limitTime, setLimitTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
   const [soberTime, setSoberTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
 
   createEffect(() => {
     if (count() == 0) {
-      let currentTime = new Date().getTime()
+      const currentTime = new Date().getTime()
       setLimitTime(new Date(currentTime).toLocaleTimeString())
       setSoberTime(new Date(currentTime).toLocaleTimeString())
     } else {
-      let currentTime = new Date().getTime();
+      const currentTime = new Date().getTime();
       setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
       setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
     }
@@ -20,11 +20,11 @@ export const Checker: Component = () => {
 
   setInterval(() => {
     if (count() == 0) {
-      let currentTime = new Date().getTime()
+      const currentTime = new Date().getTime()
       setLimitTime(new Date(currentTime).toLocaleTimeString())
       setSoberTime(new Date(currentTime).toLocaleTimeString())
     } else {
-      let currentTime = new Date().getTime();
+      const currentTime = new Date().getTime();
       setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
       setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
     }

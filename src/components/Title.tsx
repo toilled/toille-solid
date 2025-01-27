@@ -27,7 +27,7 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
     }
   }
 
-  const titleClasses: any = {
+  const titleClasses = {
     animate__animated: true,
     animate__fadeInLeft: true,
   };
