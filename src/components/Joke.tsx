@@ -57,9 +57,26 @@ export const Joke: Component = () => {
         }
     }
 
+    const errorFallback = () => {
+        return (
+            <article
+                style={{ "margin-bottom": 0 }}
+            >
+                <header>
+                    <strong>
+                        Have a laugh!
+                    </strong>
+                </header>
+                <p classList={jokeClasses} aria-busy="true">
+                    icanhazdadjoke.com might be dowm.
+                </p>
+            </article>
+        );
+    }
+
     return (
         <footer onclick={newSuggestion} style={{ cursor: joke.loading ? 'progress' : '' }}>
-            <Show when={joke()} fallback={<article aria-busy="true" style={{ "margin-bottom": 0 }}>icanhazdadjoke.com might be dowm.</article>}>
+            <Show when={joke()} fallback={errorFallback()}>
                 <article
                     title="Click for a new suggestion"
                     style={{ "margin-bottom": 0 }}

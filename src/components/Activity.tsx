@@ -57,9 +57,26 @@ export const Activity: Component = () => {
         }
     }
 
+    const errorFallback = () => {
+        return (
+            <article
+                style={{ "margin-bottom": 0 }}
+            >
+                <header>
+                    <strong>
+                        Have a laugh!
+                    </strong>
+                </header>
+                <p classList={activityClasses} aria-busy="true">
+                    The Bored API might be dowm.
+                </p>
+            </article>
+        );
+    }
+
     return (
         <footer onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
-            <Show when={activity()} fallback={<article aria-busy="true" style={{ "margin-bottom": 0 }}>The Bored API might be dowm.</article>}>
+            <Show when={activity()} fallback={errorFallback()}>
                 <article
                     title="Click for a new suggestion"
                     style={{ "margin-bottom": 0 }}
