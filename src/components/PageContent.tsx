@@ -7,10 +7,15 @@ import { useParams } from "@solidjs/router";
 export const PageContent: Component = () => {
   const [showHint, setShowHint] = createSignal(false);
   const [page, setPage] = createSignal(pages[0]);
+  const [transitions, setTransitions] = createSignal(true);
 
   createEffect(() => {
     const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
-    (document as any).startViewTransition(() => setPage(currentPage || pages[0]));
+    if (transitions()) {
+      (document as any).startViewTransition(() => setPage(currentPage || pages[0]));
+    } else {
+      setPage(currentPage || pages[0]);
+    }
   });
 
   const contentClasses = {
@@ -69,27 +74,30 @@ export const PageContent: Component = () => {
   }
 
   return (
-    <main classList={contentClasses}>
-      <header>
-        <h2
-          classList={headingClasses}
-          onMouseDown={() => {
-            setShowHint(true);
-            setTimeout(() => {
-              setShowHint(false);
-            }, 500);
-          }}
-        >{page().title}
-          <Transition onEnter={fadeIn} onExit={fadeOut} >
-            <Show when={showHint()}>
-              <span style="font-weight: 100;font-style: italic;font-size:0.6em;vertical-align: middle;"> - Nothing here</span>
-            </Show>
-          </Transition>
-        </h2>
-      </header>
-      <For each={page().body}>{
-        (paragraph, index) => <Paragraph paragraph={paragraph} last={index() + 1 === page().body.length} />
-      }</For>
-    </main >
+    <>
+      <main classList={contentClasses}>
+        <header>
+          <h2
+            classList={headingClasses}
+            onMouseDown={() => {
+              setShowHint(true);
+              setTimeout(() => {
+                setShowHint(false);
+              }, 500);
+            }}
+          >{page().title}
+            <Transition onEnter={fadeIn} onExit={fadeOut} >
+              <Show when={showHint()}>
+                <span style="font-weight: 100;font-style: italic;font-size:0.6em;vertical-align: middle;"> - Nothing here</span>
+              </Show>
+            </Transition>
+          </h2>
+        </header>
+        <For each={page().body}>{
+          (paragraph, index) => <Paragraph paragraph={paragraph} last={index() + 1 === page().body.length} />
+        }</For>
+        <small>Page transitions: <a onclick={() => setTransitions(!transitions())} class="contrast">{transitions() ? 'On' : 'Off'}</a></small>
+      </main >
+    </>
   );
 };
