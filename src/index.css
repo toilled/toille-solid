@@ -44,3 +44,29 @@
  .hide {
    display: none;
  }
+
+ @keyframes slide-in {
+   from {
+     opacity: 0;
+     transform: translateX(25%);
+   }
+ }
+
+ @keyframes slide-out {
+   to {
+     opacity: 0;
+     transform: translateX(-25%);
+   }
+ }
+
+ ::view-transition-old(slide) {
+   animation: 250ms both slide-out;
+ }
+
+ ::view-transition-new(slide) {
+   animation: 500ms both slide-in;
+ }
+
+ .sliding {
+   view-transition-name: slide;
+ }

@@ -10,12 +10,13 @@ export const PageContent: Component = () => {
 
   createEffect(() => {
     const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
-    setPage(currentPage || pages[0]);
+    (document as any).startViewTransition(() => setPage(currentPage || pages[0]));
   });
 
   const contentClasses = {
     animate__animated: true,
     animate__zoomIn: true,
+    sliding: true,
   };
 
   const headingClasses = {
