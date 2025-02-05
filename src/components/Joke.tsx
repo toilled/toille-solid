@@ -1,10 +1,10 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
+import { Transition } from "solid-transition-group";
 
 export const Joke: Component = () => {
     const fetchJoke = async () => (await fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } })).json();
     const [joke, { refetch }] = createResource(fetchJoke);
     const [hideHint, setHideHint] = createSignal(false);
-    const [hintFade, setHintFade] = createSignal(false);
 
     const fallback = () => {
         const fallbackClasses = {
@@ -18,25 +18,6 @@ export const Joke: Component = () => {
         );
     };
 
-    const hintFallback = () => {
-        const classes = {
-            hide: hintFade(),
-        };
-
-        return (
-            <article classList={classes} style="padding-top: 0; margin-top: 0">
-                <footer style={{
-                    "font-style": "oblique",
-                    "font-size": "0.8em",
-                    "margin-top": 0,
-                    "z-index": 1
-                }}>
-                    Click to update
-                </footer>
-            </article>
-        );
-    };
-
     const jokeClasses = {
         marginless: true,
     };
@@ -45,9 +26,6 @@ export const Joke: Component = () => {
         refetch();
         if (!hideHint()) {
             setHideHint(true);
-            setTimeout(() => {
-                setHintFade(true);
-            }, 400);
         }
     }
 
@@ -68,6 +46,13 @@ export const Joke: Component = () => {
         );
     }
 
+    const fadeOut = (el: Element, done: () => void): void => {
+        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+            duration: 600
+        });
+        a.finished.then(done);
+    };
+
     return (
         <footer onclick={newSuggestion} style={{ cursor: joke.loading ? 'progress' : '' }}>
             <Show when={joke()} fallback={errorFallback()}>
@@ -87,17 +72,19 @@ export const Joke: Component = () => {
                     </Show>
                 </article>
 
-                <Show when={!hideHint()} fallback={hintFallback()}>
-                    <article style={{ "padding-top": 0, "margin-top": 0 }}>
-                        <footer style={{
-                            "font-style": "oblique",
-                            "font-size": "0.8em",
-                            "margin-top": 0
-                        }}>
-                            Click to update
-                        </footer>
-                    </article>
-                </Show>
+                <Transition onExit={fadeOut} >
+                    <Show when={!hideHint()}>
+                        <article style={{ "padding-top": 0, "margin-top": 0 }}>
+                            <footer style={{
+                                "font-style": "oblique",
+                                "font-size": "0.8em",
+                                "margin-top": 0
+                            }}>
+                                Click to update
+                            </footer>
+                        </article>
+                    </Show>
+                </Transition>
             </Show>
         </footer >
     );

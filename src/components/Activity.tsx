@@ -1,10 +1,10 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
+import { Transition } from "solid-transition-group";
 
 export const Activity: Component = () => {
     const fetchActivity = async () => (await fetch('https://bored.api.lewagon.com/api/activity')).json();
     const [activity, { refetch }] = createResource(fetchActivity);
     const [hideHint, setHideHint] = createSignal(false);
-    const [hintFade, setHintFade] = createSignal(false);
 
     const fallback = () => {
         const fallbackClasses = {
@@ -18,25 +18,6 @@ export const Activity: Component = () => {
         );
     };
 
-    const hintFallback = () => {
-        const classes = {
-            hide: hintFade(),
-        };
-
-        return (
-            <article classList={classes} style="padding-top: 0; margin-top: 0; margin-bottom: 0">
-                <footer style={{
-                    "font-style": "oblique",
-                    "font-size": "0.8em",
-                    "margin-top": 0,
-                    "z-index": 1
-                }}>
-                    Click to update
-                </footer>
-            </article>
-        );
-    };
-
     const activityClasses = {
         marginless: true,
     };
@@ -45,9 +26,6 @@ export const Activity: Component = () => {
         refetch();
         if (!hideHint()) {
             setHideHint(true);
-            setTimeout(() => {
-                setHintFade(true);
-            }, 400);
         }
     }
 
@@ -67,6 +45,13 @@ export const Activity: Component = () => {
             </article>
         );
     }
+
+    const fadeOut = (el: Element, done: () => void): void => {
+        const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+            duration: 600
+        });
+        a.finished.then(done);
+    };
 
     return (
         <footer onclick={newSuggestion} style={{ cursor: activity.loading ? 'progress' : '' }}>
@@ -91,17 +76,19 @@ export const Activity: Component = () => {
                     </Show>
                 </article>
 
-                <Show when={!hideHint()} fallback={hintFallback()}>
-                    <article style={{ "padding-top": 0, "margin-top": 0, "margin-bottom": 0 }}>
-                        <footer style={{
-                            "font-style": "oblique",
-                            "font-size": "0.8em",
-                            "margin-top": 0
-                        }}>
-                            Click to update
-                        </footer>
-                    </article>
-                </Show>
+                <Transition onExit={fadeOut} >
+                    <Show when={!hideHint()}>
+                        <article style={{ "padding-top": 0, "margin-top": 0, "margin-bottom": 0 }}>
+                            <footer style={{
+                                "font-style": "oblique",
+                                "font-size": "0.8em",
+                                "margin-top": 0
+                            }}>
+                                Click to update
+                            </footer>
+                        </article>
+                    </Show>
+                </Transition>
             </Show>
         </footer >
     );
