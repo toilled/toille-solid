@@ -30,7 +30,7 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm init @eslint/config@latest -- --config eslint-config-standard
+          npm init @eslint/config@latest
           npm install @microsoft/eslint-formatter-sarif
 
       - name: Run ESLint
