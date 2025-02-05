@@ -3,13 +3,14 @@ import { render } from 'solid-js/web';
 import '@picocss/pico';
 import './index.css';
 
-import { createSignal, createEffect, Show, Component } from 'solid-js';
+import { createSignal, createEffect, Show, Component, lazy } from 'solid-js';
 import { Title } from "./components/Title";
 import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
-import { Checker } from "./components/Checker";
-import { Activity } from './components/Activity';
-import { Joke } from './components/Joke';
+
+const Checker = lazy(() => import('./components/Checker'));
+const Activity = lazy(() => import('./components/Activity'));
+const Joke = lazy(() => import('./components/Joke'));
 
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';

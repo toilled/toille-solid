@@ -1,7 +1,7 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
 import { Transition } from "solid-transition-group";
 
-export const Joke: Component = () => {
+const Joke: Component = () => {
     const fetchJoke = async () => (await fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } })).json();
     const [joke, { refetch }] = createResource(fetchJoke);
     const [hideHint, setHideHint] = createSignal(false);
@@ -89,3 +89,5 @@ export const Joke: Component = () => {
         </footer >
     );
 };
+
+export default Joke;

@@ -1,6 +1,6 @@
 import { Component, createEffect, createSignal } from "solid-js";
 
-export const Checker: Component = () => {
+const Checker: Component = () => {
   const [count, setCount] = createSignal(0);
   const currentTime = new Date().getTime()
   const [limitTime, setLimitTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
@@ -64,3 +64,5 @@ export const Checker: Component = () => {
     </footer>
   );
 }
+
+export default Checker;

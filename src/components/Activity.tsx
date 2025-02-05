@@ -1,7 +1,7 @@
 import { Component, Show, createResource, createSignal } from "solid-js";
 import { Transition } from "solid-transition-group";
 
-export const Activity: Component = () => {
+const Activity: Component = () => {
     const fetchActivity = async () => (await fetch('https://bored.api.lewagon.com/api/activity')).json();
     const [activity, { refetch }] = createResource(fetchActivity);
     const [hideHint, setHideHint] = createSignal(false);
@@ -93,3 +93,5 @@ export const Activity: Component = () => {
         </footer >
     );
 };
+
+export default Activity;
