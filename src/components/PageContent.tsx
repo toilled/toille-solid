@@ -13,11 +13,6 @@ export const PageContent: Component = () => {
     setPage(currentPage || pages[0]);
   });
 
-  const contentClasses = {
-    animate__animated: true,
-    animate__zoomIn: true,
-  };
-
   const headingClasses = {
     title: true,
   };
@@ -38,13 +33,8 @@ export const PageContent: Component = () => {
   if (useParams().incorrect != undefined) {
     const incorrect = useParams().incorrect;
 
-    const contentClasses = {
-      animate__animated: true,
-      animate__shakeX: true,
-    };
-
     return (
-      <main classList={contentClasses}>
+      <main>
         <header>
           <h2
             classList={headingClasses}
@@ -68,7 +58,7 @@ export const PageContent: Component = () => {
   }
 
   return (
-    <main classList={contentClasses}>
+    <main>
       <header>
         <h2
           classList={headingClasses}
