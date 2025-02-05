@@ -9,8 +9,6 @@ export const Joke: Component = () => {
     const fallback = () => {
         const fallbackClasses = {
             marginless: true,
-            animate__animated: true,
-            animate__fadeOut: true,
         };
 
         return (
@@ -22,8 +20,6 @@ export const Joke: Component = () => {
 
     const hintFallback = () => {
         const classes = {
-            animate__animated: true,
-            animate__rotateOutDownLeft: true,
             hide: hintFade(),
         };
 
@@ -43,8 +39,6 @@ export const Joke: Component = () => {
 
     const jokeClasses = {
         marginless: true,
-        animate__animated: true,
-        animate__fadeIn: true,
     };
 
     const newSuggestion = () => {

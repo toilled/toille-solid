@@ -7,3 +7,6 @@ ci:
 
 dev:
 	npm run dev
+
+lint:
+	npx eslint .

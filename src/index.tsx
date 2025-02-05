@@ -1,7 +1,6 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
 import '@picocss/pico';
-import 'animate.css';
 import './index.css';
 
 import { createSignal, createEffect, Show, Component } from 'solid-js';

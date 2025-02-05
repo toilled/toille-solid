@@ -27,20 +27,13 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
     }
   }
 
-  const titleClasses = {
-    animate__animated: true,
-    animate__fadeInLeft: true,
-  };
-
   return (
-    <ul classList={titleClasses}>
+    <ul>
       <li>
         <hgroup>
           <h1
             classList={{
               title: true,
-              animate__animated: true,
-              animate__heartBeat: titleAnimate() === true,
               question: true,
             }}
             onMouseDown={() => { animateTitle(); setActivity(!activity()) }}
@@ -48,8 +41,6 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
           <h2
             classList={{
               title: true,
-              animate__animated: true,
-              animate__heartBeat: subtitleAnimate() === true,
               question: true,
             }}
             onMouseDown={() => { animateSubtitle(); setJoke(!joke()) }}
