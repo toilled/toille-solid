@@ -3,32 +3,28 @@ import { Component, createEffect, createSignal } from "solid-js";
 export const Checker: Component = () => {
   const [count, setCount] = createSignal(0);
   const currentTime = new Date().getTime()
-  const [limitTime, setLimitTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
-  const [soberTime, setSoberTime] = createSignal(() => new Date(currentTime).toLocaleTimeString());
+  const [limitTime, setLimitTime] = createSignal(new Date(currentTime).toLocaleTimeString());
+  const [soberTime, setSoberTime] = createSignal(new Date(currentTime).toLocaleTimeString());
 
-  createEffect(() => {
-    if (count() == 0) {
-      const currentTime = new Date().getTime()
-      setLimitTime(new Date(currentTime).toLocaleTimeString())
-      setSoberTime(new Date(currentTime).toLocaleTimeString())
-    } else {
-      const currentTime = new Date().getTime();
-      setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
-      setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
-    }
-  });
+  function updateTimes() {
+    return () => {
+      const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+      } as never;
+      if (count() == 0) {
+        const currentTime = new Date().getTime()
+        setLimitTime(new Date(currentTime).toLocaleTimeString([], options))
+        setSoberTime(new Date(currentTime).toLocaleTimeString([], options))
+      } else {
+        const currentTime = new Date().getTime();
+        setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString([], options));
+        setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString([], options));
+      }
+    };
+  }
 
-  setInterval(() => {
-    if (count() == 0) {
-      const currentTime = new Date().getTime()
-      setLimitTime(new Date(currentTime).toLocaleTimeString())
-      setSoberTime(new Date(currentTime).toLocaleTimeString())
-    } else {
-      const currentTime = new Date().getTime();
-      setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString());
-      setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString());
-    }
-  }, 1000);
+  createEffect(updateTimes());
 
   return (
     <footer>
@@ -47,7 +43,7 @@ export const Checker: Component = () => {
         <table class="marginless">
           <thead>
             <tr>
-              <th>Units</th>
+              <th>Units consumed</th>
               <th>Borderline time</th>
               <th>Safe time</th>
             </tr>
