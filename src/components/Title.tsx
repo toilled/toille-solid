@@ -7,11 +7,11 @@ interface TitleProps {
   setActivity: (activity: boolean) => void;
   joke: () => boolean;
   setJoke: (joke: boolean) => void;
-};
+}
 
 export const Title: Component<TitleProps> = ({ title, subtitle, activity, setActivity, joke, setJoke }: TitleProps) => {
-  const [titleAnimate, setTitleAnimate] = createSignal(false);
-  const [subtitleAnimate, setSubtitleAnimate] = createSignal(false);
+  const [ titleAnimate, setTitleAnimate ] = createSignal(false);
+  const [ subtitleAnimate, setSubtitleAnimate ] = createSignal(false);
 
   function animateTitle() {
     if (!titleAnimate()) {
@@ -32,19 +32,25 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
       <li>
         <hgroup>
           <h1
-            classList={{
+            classList={ {
               title: true,
               question: true,
-            }}
-            onMouseDown={() => { animateTitle(); setActivity(!activity()) }}
-          >{title}</h1>
+            } }
+            onMouseDown={ () => {
+              animateTitle();
+              setActivity(!activity());
+            } }
+          >{ title }</h1>
           <h2
-            classList={{
+            classList={ {
               title: true,
               question: true,
-            }}
-            onMouseDown={() => { animateSubtitle(); setJoke(!joke()) }}
-          >{subtitle}</h2>
+            } }
+            onMouseDown={ () => {
+              animateSubtitle();
+              setJoke(!joke());
+            } }
+          >{ subtitle }</h2>
         </hgroup>
       </li>
     </ul>

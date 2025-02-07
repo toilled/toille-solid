@@ -1,22 +1,22 @@
- html {
-   user-select: none;
+html {
+    user-select: none;
 
-   background: radial-gradient(ellipse at bottom, #3b4775 0%, #090a0f 100%);
-   background-attachment: fixed;
- }
+    background: radial-gradient(ellipse at bottom, #3b4775 0%, #090a0f 100%);
+    background-attachment: fixed;
+}
 
- .question {
-   cursor: help;
- }
+.question {
+    cursor: help;
+}
 
- .marginless {
-   margin: 0;
- }
+.marginless {
+    margin: 0;
+}
 
- .title {
-   text-shadow: 2px 2px 2px rgb(0 0 0 / 0.2);
- }
+.title {
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 0.2);
+}
 
- article {
-   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
- }
+article {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
