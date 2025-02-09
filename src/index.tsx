@@ -9,7 +9,7 @@ import { Menu } from "./components/Menu";
 import { PageContent } from "./components/PageContent";
 import { Checker } from "./components/Checker";
 import { Activity } from './components/Activity';
-import { Joke } from './components/Joke';
+import { Suggestion } from "./components/Suggestion";
 
 import pages from './configs/pages.json';
 import titles from './configs/titles.json';
@@ -80,7 +80,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
       </Transition>
       <Transition onEnter={ fadeIn } onExit={ fadeOut }>
         <Show when={ joke() }>
-          <Joke/>
+          <Suggestion url="https://icanhazdadjoke.com/" valueName="joke" title="Have a laugh!" />
         </Show>
       </Transition>
     </>

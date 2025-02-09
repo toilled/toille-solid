@@ -1,8 +1,14 @@
 import { Component, createResource, createSignal, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 
-export const Joke: Component = () => {
-  const fetchJoke = async () => (await fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } })).json();
+interface SuggestionProps {
+  url: string;
+  valueName: string;
+  title: string;
+}
+
+export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }: SuggestionProps) => {
+  const fetchJoke = async () => (await fetch(url, { headers: { 'Accept': 'application/json' } })).json();
   const [ joke, { refetch } ] = createResource(fetchJoke);
   const [ hideHint, setHideHint ] = createSignal(false);
 
@@ -13,7 +19,7 @@ export const Joke: Component = () => {
 
     return (
       <p classList={ fallbackClasses }>
-        { joke().joke }
+        { joke()[valueName] }
       </p>
     );
   };
@@ -40,7 +46,7 @@ export const Joke: Component = () => {
           </strong>
         </header>
         <p classList={ jokeClasses } aria-busy="true">
-          icanhazdadjoke.com might be dowm.
+          { url } might be dowm.
         </p>
       </article>
     );
@@ -62,12 +68,12 @@ export const Joke: Component = () => {
         >
           <header>
             <strong>
-              Have a laugh!
+              { title }
             </strong>
           </header>
           <Show when={ !joke.loading } fallback={ fallback() }>
             <p classList={ jokeClasses }>
-              { joke().joke }
+              { joke()[valueName] }
             </p>
           </Show>
         </article>
