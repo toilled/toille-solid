@@ -1,8 +1,21 @@
 html {
     user-select: none;
 
-    background: radial-gradient(ellipse at bottom, #3b4775 0%, #090a0f 100%);
-    background-attachment: fixed;
+    background: radial-gradient(ellipse at top, #3b4775 0%, #090a0f 100%) fixed;
+    background-size: 130% 130%;
+    animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 .question {
