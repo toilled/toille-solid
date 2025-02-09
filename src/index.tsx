@@ -89,7 +89,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
 
 const root = document.getElementById('root');
 const filters: MatchFilters = {
-  name: [ "home", "about", "interests" ], // allow enum values
+  name: pages.map(page => {return page.link.slice(1) }),
 };
 
 render(
