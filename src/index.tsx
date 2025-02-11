@@ -47,6 +47,11 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
     });
     a.finished.then(done);
   };
+
+  function noFootersShowing() {
+    return !activity() && !checker() && !joke();
+  }
+
   return (
     <>
       <nav>
@@ -62,7 +67,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
       </nav>
       { props.children }
       <Transition onEnter={ fadeIn } onExit={ fadeOut }>
-        <Show when={ !activity() && !checker() && !joke() && showHint() }>
+        <Show when={ noFootersShowing() && showHint() }>
           <footer onClick={ () => setChecker(true) }>
             <article>The titles might be clickable...</article>
           </footer>
