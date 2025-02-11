@@ -29,7 +29,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
 
   setTimeout(() => {
     setShowHint(true);
-  }, 3000);
+  }, 2000);
 
   setTimeout(() => {
     setShowHint(false);
