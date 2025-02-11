@@ -36,13 +36,13 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
   }, 5000);
 
   const fadeIn = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 0 }, { opacity: 1 } ], {
+    const a = el.animate([ { opacity: 0, height: 0 }, { opacity: 1 } ], {
       duration: 600
     });
     a.finished.then(done);
   };
   const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 1 }, { opacity: 0 } ], {
+    const a = el.animate([ { opacity: 1 }, { opacity: 0, height: 0 } ], {
       duration: 600
     });
     a.finished.then(done);
