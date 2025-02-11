@@ -69,7 +69,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
       <Transition onEnter={ fadeIn } onExit={ fadeOut }>
         <Show when={ noFootersShowing() && showHint() }>
           <footer onClick={ () => setChecker(true) }>
-            <article>The titles might be clickable...</article>
+            The titles might be clickable...
           </footer>
         </Show>
       </Transition>
