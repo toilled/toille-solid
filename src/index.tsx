@@ -29,24 +29,29 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
 
   setTimeout(() => {
     setShowHint(true);
-  }, 3000);
+  }, 2000);
 
   setTimeout(() => {
     setShowHint(false);
   }, 5000);
 
   const fadeIn = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 0 }, { opacity: 1 } ], {
+    const a = el.animate([ { opacity: 0, height: 0 }, { opacity: 1 } ], {
       duration: 600
     });
     a.finished.then(done);
   };
   const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 1 }, { opacity: 0 } ], {
+    const a = el.animate([ { opacity: 1 }, { opacity: 0, height: 0 } ], {
       duration: 600
     });
     a.finished.then(done);
   };
+
+  function noFootersShowing() {
+    return !activity() && !checker() && !joke();
+  }
+
   return (
     <>
       <nav>
@@ -62,9 +67,9 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
       </nav>
       { props.children }
       <Transition onEnter={ fadeIn } onExit={ fadeOut }>
-        <Show when={ !activity() && !checker() && !joke() && showHint() }>
+        <Show when={ noFootersShowing() && showHint() }>
           <footer onClick={ () => setChecker(true) }>
-            <article>The titles might be clickable...</article>
+            The titles might be clickable...
           </footer>
         </Show>
       </Transition>
