@@ -24,7 +24,7 @@ const Layout: Component<RouteSectionProps<unknown>> = props => {
 
   createEffect(() => {
     const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
-    document.title = "Elliot | " + (currentPage || pages[0]).name;
+    document.title = "Elliot > " + (currentPage || pages[0]).title;
   });
 
   setTimeout(() => {
