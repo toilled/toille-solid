@@ -101,6 +101,7 @@ render(
   () => (
     <Router root={ Layout }>
       <Route path="/:name?" component={ PageContent } matchFilters={ filters }/>
+      <Route path="/checker" component={ Checker }/>
       <Route path="*incorrect" component={ PageContent }/>
     </Router>
   ),
