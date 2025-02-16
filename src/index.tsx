@@ -16,11 +16,11 @@ import titles from './configs/titles.json';
 import { Transition } from "solid-transition-group";
 import { MatchFilters, Route, Router, RouteSectionProps, useParams } from '@solidjs/router';
 
-const Layout: Component<RouteSectionProps<unknown>> = props => {
-  const [ checker, setChecker ] = createSignal(false);
-  const [ activity, setActivity ] = createSignal(false);
-  const [ joke, setJoke ] = createSignal(false);
-  const [ showHint, setShowHint ] = createSignal(false);
+const Layout: Component<RouteSectionProps> = props => {
+  const [ checker, setChecker ] = createSignal<boolean>(false);
+  const [ activity, setActivity ] = createSignal<boolean>(false);
+  const [ joke, setJoke ] = createSignal<boolean>(false);
+  const [ showHint, setShowHint ] = createSignal<boolean>(false);
 
   createEffect(() => {
     const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);

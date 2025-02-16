@@ -1,10 +1,10 @@
 import { Component, createEffect, createSignal } from "solid-js";
 
 export const Checker: Component = () => {
-  const [ count, setCount ] = createSignal(0);
+  const [ count, setCount ] = createSignal<number>(0);
   const currentTime = new Date().getTime();
-  const [ limitTime, setLimitTime ] = createSignal(new Date(currentTime).toLocaleTimeString());
-  const [ soberTime, setSoberTime ] = createSignal(new Date(currentTime).toLocaleTimeString());
+  const [ limitTime, setLimitTime ] = createSignal<string>(new Date(currentTime).toLocaleTimeString());
+  const [ soberTime, setSoberTime ] = createSignal<string>(new Date(currentTime).toLocaleTimeString());
 
   function updateTimes() {
     return () => {

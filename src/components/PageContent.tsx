@@ -3,10 +3,11 @@ import pages from '../configs/pages.json';
 import { Paragraph } from "./Paragraph";
 import { Transition } from "solid-transition-group";
 import { useParams } from "@solidjs/router";
+import {Page} from "../interfaces/Page";
 
 export const PageContent: Component = () => {
-  const [ showHint, setShowHint ] = createSignal(false);
-  const [ page, setPage ] = createSignal(pages[0]);
+  const [ showHint, setShowHint ] = createSignal<boolean>(false);
+  const [ page, setPage ] = createSignal<Page>(pages[0]);
 
   createEffect(() => {
     const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);

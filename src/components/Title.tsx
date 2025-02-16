@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component } from "solid-js";
 
 interface TitleProps {
   title: string,
@@ -10,23 +10,6 @@ interface TitleProps {
 }
 
 export const Title: Component<TitleProps> = ({ title, subtitle, activity, setActivity, joke, setJoke }: TitleProps) => {
-  const [ titleAnimate, setTitleAnimate ] = createSignal(false);
-  const [ subtitleAnimate, setSubtitleAnimate ] = createSignal(false);
-
-  function animateTitle() {
-    if (!titleAnimate()) {
-      setTitleAnimate(true);
-      setTimeout(() => setTitleAnimate(false), 900);
-    }
-  }
-
-  function animateSubtitle() {
-    if (!subtitleAnimate()) {
-      setSubtitleAnimate(true);
-      setTimeout(() => setSubtitleAnimate(false), 900);
-    }
-  }
-
   return (
     <ul>
       <li>
@@ -37,7 +20,6 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
               question: true,
             } }
             onMouseDown={ () => {
-              animateTitle();
               setActivity(!activity());
             } }
           >{ title }</h1>
@@ -47,7 +29,6 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
               question: true,
             } }
             onMouseDown={ () => {
-              animateSubtitle();
               setJoke(!joke());
             } }
           >{ subtitle }</h2>

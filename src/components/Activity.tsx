@@ -4,7 +4,7 @@ import { Transition } from "solid-transition-group";
 export const Activity: Component = () => {
   const fetchActivity = async () => (await fetch('https://bored.api.lewagon.com/api/activity')).json();
   const [ activity, { refetch } ] = createResource(fetchActivity);
-  const [ hideHint, setHideHint ] = createSignal(false);
+  const [ hideHint, setHideHint ] = createSignal<boolean>(false);
 
   const fallback = () => {
     const fallbackClasses = {

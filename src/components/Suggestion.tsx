@@ -10,7 +10,7 @@ interface SuggestionProps {
 export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }: SuggestionProps) => {
   const fetchJoke = async () => (await fetch(url, { headers: { 'Accept': 'application/json' } })).json();
   const [ joke, { refetch } ] = createResource(fetchJoke);
-  const [ hideHint, setHideHint ] = createSignal(false);
+  const [ hideHint, setHideHint ] = createSignal<boolean>(false);
 
   const fallback = () => {
     const fallbackClasses = {
