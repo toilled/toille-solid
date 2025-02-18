@@ -8,11 +8,11 @@ interface SuggestionProps {
 }
 
 export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }: SuggestionProps) => {
-  const fetchJoke = async () => (await fetch(url, { headers: { 'Accept': 'application/json' } })).json();
-  const [ joke, { refetch } ] = createResource(fetchJoke);
+  const fetchSuggestion = async () => (await fetch(url, { headers: { 'Accept': 'application/json' } })).json();
+  const [ suggestion, { refetch } ] = createResource(fetchSuggestion);
   const [ hideHint, setHideHint ] = createSignal<boolean>(false);
 
-  const jokeClasses = {
+  const suggestionClasses = {
     marginless: true,
   };
 
@@ -33,7 +33,7 @@ export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }
             Have a laugh!
           </strong>
         </header>
-        <p classList={ jokeClasses } aria-busy="true">
+        <p classList={ suggestionClasses } aria-busy="true">
           { url } might be dowm.
         </p>
       </article>
@@ -48,8 +48,8 @@ export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }
   };
 
   return (
-    <footer onclick={ newSuggestion } style={ { cursor: joke.loading ? 'progress' : '' } }>
-      <Show when={ joke() } fallback={ errorFallback() }>
+    <footer onclick={ newSuggestion } style={ { cursor: suggestion.loading ? 'progress' : '' } }>
+      <Show when={ suggestion() } fallback={ errorFallback() }>
         <article
           title="Click for a new suggestion"
           style={ { "margin-bottom": 0 } }
@@ -59,8 +59,8 @@ export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }
               { title }
             </strong>
           </header>
-          <p classList={ jokeClasses }>
-            { joke()[valueName] }
+          <p classList={ suggestionClasses }>
+            { suggestion()[valueName] }
           </p>
         </article>
 
