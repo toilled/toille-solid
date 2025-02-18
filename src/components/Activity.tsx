@@ -6,18 +6,6 @@ export const Activity: Component = () => {
   const [ activity, { refetch } ] = createResource(fetchActivity);
   const [ hideHint, setHideHint ] = createSignal<boolean>(false);
 
-  const fallback = () => {
-    const fallbackClasses = {
-      marginless: true,
-    };
-
-    return (
-      <p classList={ fallbackClasses }>
-        { activity().activity }
-      </p>
-    );
-  };
-
   const activityClasses = {
     marginless: true,
   };
@@ -69,11 +57,9 @@ export const Activity: Component = () => {
               activity
             </strong> (The Bored API)
           </header>
-          <Show when={ !activity.loading } fallback={ fallback() }>
-            <p classList={ activityClasses }>
-              { activity().activity }
-            </p>
-          </Show>
+          <p classList={ activityClasses }>
+            { activity().activity }
+          </p>
         </article>
 
         <Transition onExit={ fadeOut }>

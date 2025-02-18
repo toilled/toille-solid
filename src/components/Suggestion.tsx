@@ -12,18 +12,6 @@ export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }
   const [ joke, { refetch } ] = createResource(fetchJoke);
   const [ hideHint, setHideHint ] = createSignal<boolean>(false);
 
-  const fallback = () => {
-    const fallbackClasses = {
-      marginless: true,
-    };
-
-    return (
-      <p classList={ fallbackClasses }>
-        { joke()[valueName] }
-      </p>
-    );
-  };
-
   const jokeClasses = {
     marginless: true,
   };
@@ -71,11 +59,9 @@ export const Suggestion: Component<SuggestionProps> = ({ url, valueName, title }
               { title }
             </strong>
           </header>
-          <Show when={ !joke.loading } fallback={ fallback() }>
-            <p classList={ jokeClasses }>
-              { joke()[valueName] }
-            </p>
-          </Show>
+          <p classList={ jokeClasses }>
+            { joke()[valueName] }
+          </p>
         </article>
 
         <Transition onExit={ fadeOut }>
