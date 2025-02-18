@@ -31,9 +31,9 @@
     ]
   },
   {
-    "name": "HTML",
-    "link": "/html",
-    "title": "Test HTML",
-    "html": "<article><header>Testing</header>This is HTML</article>"
+    "name": "FAQ",
+    "link": "/faq",
+    "title": "Some Questions Answered",
+    "html": "<article><details><summary>Why does this site exist?</summary><p>It is simply a place for me to test ideas and new concepts as I learn them.</p></details><hr/><details><summary>Why is this site made using JavaScript?</summary><p>This gives me the opportunity to see the differences between making a site in JavaScript and making one in PHP.</p></details>"
   }
 ]
