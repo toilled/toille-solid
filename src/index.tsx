@@ -64,6 +64,7 @@ const Layout: Component<RouteSectionProps> = props => {
           setJoke={ setJoke }
         />
         <Menu pages={ pages }/>
+        <ul><li>Updated 20/02/2025</li></ul>
       </nav>
       { props.children }
       <Transition onEnter={ fadeIn } onExit={ fadeOut }>
