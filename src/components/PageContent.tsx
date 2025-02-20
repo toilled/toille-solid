@@ -9,26 +9,8 @@ export const PageContent: Component = () => {
   const [ showHint, setShowHint ] = createSignal<boolean>(false);
   const [ page, setPage ] = createSignal<Page>(pages[0]);
 
-  createEffect(() => {
-    const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
-    setPage(currentPage || pages[0]);
-  });
-
   const headingClasses = {
     title: true,
-  };
-
-  const fadeIn = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 0 }, { opacity: 1 } ], {
-      duration: 500
-    });
-    a.finished.then(done);
-  };
-  const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([ { opacity: 1 }, { opacity: 0 } ], {
-      duration: 500
-    });
-    a.finished.then(done);
   };
 
   if (useParams().incorrect != undefined) {
@@ -46,17 +28,30 @@ export const PageContent: Component = () => {
               }, 500);
             } }
           >404 - Page not found
-            <Transition onEnter={ fadeIn } onExit={ fadeOut }>
-              <Show when={ showHint() }>
-                <span style="font-weight: 100;font-style: italic;font-size:0.6em;vertical-align: middle;"> - Nothing here</span>
-              </Show>
-            </Transition>
           </h2>
         </header>
-        <Paragraph paragraph={ `The path <strong>${ incorrect }</strong> does not exist!` } last={ true }/>
+        <Paragraph paragraph={ `The page <strong>${ incorrect }</strong> does not exist!` } last={ true }/>
       </main>
     );
   }
+
+  createEffect(() => {
+    const currentPage = pages.find((page) => page.link.slice(1) === useParams().name);
+    setPage(currentPage || pages[0]);
+  });
+
+  const fadeIn = (el: Element, done: () => void): void => {
+    const a = el.animate([ { opacity: 0 }, { opacity: 1 } ], {
+      duration: 500
+    });
+    a.finished.then(done);
+  };
+  const fadeOut = (el: Element, done: () => void): void => {
+    const a = el.animate([ { opacity: 1 }, { opacity: 0 } ], {
+      duration: 500
+    });
+    a.finished.then(done);
+  };
 
   return (
     <main>
