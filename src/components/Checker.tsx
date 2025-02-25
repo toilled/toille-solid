@@ -1,42 +1,54 @@
 import { Component, createEffect, createSignal } from "solid-js";
 
 export const Checker: Component = () => {
-  const [ count, setCount ] = createSignal<number>(0);
-  const currentTime = new Date().getTime();
-  const [ limitTime, setLimitTime ] = createSignal<string>(new Date(currentTime).toLocaleTimeString());
-  const [ soberTime, setSoberTime ] = createSignal<string>(new Date(currentTime).toLocaleTimeString());
+  // State management:
+  const [unitCount, setUnitCount] = createSignal<number>(0);
+  const [borderlineTime, setBorderlineTime] = createSignal<string>("");
+  const [safeTime, setSafeTime] = createSignal<string>("");
 
-  function updateTimes() {
-    return () => {
-      const options = {
-        hour: '2-digit',
-        minute: '2-digit',
-      } as never;
-      if (count() == 0) {
-        const currentTime = new Date().getTime();
-        setLimitTime(new Date(currentTime).toLocaleTimeString([], options));
-        setSoberTime(new Date(currentTime).toLocaleTimeString([], options));
-      } else {
-        const currentTime = new Date().getTime();
-        setLimitTime(new Date(currentTime + (count()) * 60 * 60 * 1000).toLocaleTimeString([], options));
-        setSoberTime(new Date(currentTime + (count() + 1) * 60 * 60 * 1000).toLocaleTimeString([], options));
-      }
-    };
-  }
+  // Helper function for formatting time:
+  const formatTime = (timestamp: number): string => {
+    const options = {
+      hour: "2-digit",
+      minute: "2-digit",
+    } as Intl.DateTimeFormatOptions;
+    return new Date(timestamp).toLocaleTimeString([], options);
+  };
 
-  createEffect(updateTimes());
+  // Function to update the times based on unitCount:
+  const updateTimes = () => {
+    const currentTime = Date.now(); // Use Date.now() for better readability
+    const oneHourInMs = 60 * 60 * 1000;
 
+    if (unitCount() === 0) {
+      // Initialize times to current time
+      setBorderlineTime(formatTime(currentTime));
+      setSafeTime(formatTime(currentTime));
+    } else {
+      // Calculate future times
+      setBorderlineTime(formatTime(currentTime + unitCount() * oneHourInMs));
+      setSafeTime(formatTime(currentTime + (unitCount() + 1) * oneHourInMs));
+    }
+  };
+
+  // Update the times whenever the unitCount changes:
+  createEffect(updateTimes);
+
+  // UI rendering:
   return (
     <footer>
-      <article style={ { "margin-bottom": 0 } }>
-        <header>
-          Alcohol Checker
-        </header>
+      <article style={{ "margin-bottom": 0 }}>
+        <header>Alcohol Checker</header>
         <section class="grid">
-          <button onClick={ () => setCount(count() + 1) } class="outline">
+          <button onClick={() => setUnitCount(unitCount() + 1)} class="outline">
             Add
           </button>
-          <button onClick={ () => count() == 0 ? setCount(0) : setCount(count() - 1) } class="outline">
+          <button
+            onClick={() =>
+              setUnitCount(unitCount() === 0 ? 0 : unitCount() - 1)
+            }
+            class="outline"
+          >
             Subtract
           </button>
         </section>
@@ -50,9 +62,9 @@ export const Checker: Component = () => {
           </thead>
           <tbody>
           <tr>
-            <td>{ count() }</td>
-            <td>{ limitTime() }</td>
-            <td>{ soberTime() }</td>
+            <td>{unitCount()}</td>
+            <td>{borderlineTime()}</td>
+            <td>{safeTime()}</td>
           </tr>
           </tbody>
         </table>
