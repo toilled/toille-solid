@@ -73,9 +73,14 @@ export const PageContent: Component = () => {
           </Transition>
         </h2>
       </header>
-      <For each={ page().body }>{
-        (paragraph, index) => <Paragraph paragraph={ paragraph } last={ index() + 1 === page().body.length }/>
-      }</For>
+      <Show when={ page().html }>
+        <div innerHTML={ page().html }></div>
+      </Show>
+      <Show when={ page().paragraphs }>
+        <For each={ page().paragraphs }>{
+          (paragraph, index) => <Paragraph paragraph={ paragraph } last={ index() + 1 === (page().paragraphs ?? []).length }/>
+        }</For>
+      </Show>
     </main>
   );
 };
