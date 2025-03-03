@@ -16,6 +16,7 @@ import titles from "./configs/titles.json";
 import { Transition } from "solid-transition-group";
 import {
   MatchFilters,
+  Navigate,
   Route,
   Router,
   RouteSectionProps,
@@ -114,6 +115,7 @@ const filters: MatchFilters = {
 render(
   () => (
     <Router root={Layout}>
+      <Route path="/" component={() => <Navigate href={pages[0].link} />} />
       <Route path="/:name?" component={PageContent} matchFilters={filters} />
       <Route path="/checker" component={Checker} />
       <Route path="*incorrect" component={PageContent} />

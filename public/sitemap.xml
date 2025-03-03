@@ -6,16 +6,16 @@
             https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://toille.uk/</loc>
-  <lastmod>2025-02-09</lastmod>
+  <loc>https://toille.uk/home</loc>
+  <lastmod>2025-03-03</lastmod>
 </url>
 <url>
-  <loc>https://toille.uk/About</loc>
-  <lastmod>2025-02-09</lastmod>
+  <loc>https://toille.uk/about</loc>
+  <lastmod>2025-03-03</lastmod>
 </url>
 <url>
-  <loc>https://toille.uk/Interests</loc>
-  <lastmod>2025-02-09</lastmod>
+  <loc>https://toille.uk/interests</loc>
+  <lastmod>2025-03-03</lastmod>
 </url>
 
 </urlset>

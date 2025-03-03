@@ -1,7 +1,7 @@
 [
   {
     "name": "Home",
-    "link": "/",
+    "link": "/home",
     "title": "Home",
     "body": [
       "This website serves as a home page for testing various ideas developed using Solid JS. The content presented here may undergo periodic changes as I continue to experiment with different concepts and functionalities.",
