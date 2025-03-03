@@ -9,9 +9,7 @@ interface MenuItemProps {
 export const MenuItem: Component<MenuItemProps> = ({ page }: MenuItemProps) => {
   return (
     <li>
-      <A href={ page.link }>
-        { page.name }
-      </A>
+      <A href={page.link}>{page.name}</A>
     </li>
   );
 };

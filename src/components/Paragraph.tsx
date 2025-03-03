@@ -5,7 +5,10 @@ interface ParagraphProps {
   last: boolean;
 }
 
-export const Paragraph: Component<ParagraphProps> = ({ paragraph, last }: ParagraphProps) => {
+export const Paragraph: Component<ParagraphProps> = ({
+  paragraph,
+  last,
+}: ParagraphProps) => {
   const paragraphClasses = {
     marginless: false,
   };
@@ -13,5 +16,5 @@ export const Paragraph: Component<ParagraphProps> = ({ paragraph, last }: Paragr
     paragraphClasses.marginless = true;
   }
 
-  return <p innerHTML={ paragraph } classList={ paragraphClasses }></p>;
+  return <p innerHTML={paragraph} classList={paragraphClasses}></p>;
 };
