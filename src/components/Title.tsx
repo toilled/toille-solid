@@ -22,7 +22,14 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
             onMouseDown={ () => {
               setActivity(!activity());
             } }
-          >{ title }</h1>
+          >
+            <a
+              aria-current={ activity() ? 'page' : undefined }
+              class="contrast"
+            >
+              { title }
+            </a>
+          </h1>
           <h2
             classList={ {
               title: true,
@@ -31,7 +38,14 @@ export const Title: Component<TitleProps> = ({ title, subtitle, activity, setAct
             onMouseDown={ () => {
               setJoke(!joke());
             } }
-          >{ subtitle }</h2>
+          >
+            <a
+              aria-current={ joke() ? 'page' : undefined}
+              class="secondary"
+            >
+              { subtitle }
+            </a>
+          </h2>
         </hgroup>
       </li>
     </ul>
