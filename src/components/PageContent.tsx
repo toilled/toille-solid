@@ -2,6 +2,7 @@ import { Component, createEffect, createSignal, For, Show } from "solid-js";
 import pages from "../configs/pages.json";
 import { Paragraph } from "./Paragraph";
 import { Transition } from "solid-transition-group";
+import { fadeIn, fadeOut } from "../transitions/fades";
 import { useParams } from "@solidjs/router";
 import { Page } from "../interfaces/Page";
 
@@ -45,19 +46,6 @@ export const PageContent: Component = () => {
     );
     setPage(currentPage || pages[0]);
   });
-
-  const fadeIn = (el: Element, done: () => void): void => {
-    const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: 500,
-    });
-    a.finished.then(done);
-  };
-  const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-      duration: 500,
-    });
-    a.finished.then(done);
-  };
 
   return (
     <main>

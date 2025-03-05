@@ -14,6 +14,8 @@ import { Suggestion } from "./components/Suggestion";
 import pages from "./configs/pages.json";
 import titles from "./configs/titles.json";
 import { Transition } from "solid-transition-group";
+import { fadeIn, fadeOut } from "./transitions/fades";
+
 import {
   MatchFilters,
   Navigate,
@@ -43,19 +45,6 @@ const Layout: Component<RouteSectionProps> = (props) => {
   setTimeout(() => {
     setShowHint(false);
   }, 5000);
-
-  const fadeIn = (el: Element, done: () => void): void => {
-    const a = el.animate([{ opacity: 0, height: 0 }, { opacity: 1 }], {
-      duration: 600,
-    });
-    a.finished.then(done);
-  };
-  const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([{ opacity: 1 }, { opacity: 0, height: 0 }], {
-      duration: 600,
-    });
-    a.finished.then(done);
-  };
 
   function noFootersShowing() {
     return !activity() && !checker() && !joke();
