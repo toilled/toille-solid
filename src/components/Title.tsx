@@ -30,9 +30,7 @@ export const Title: Component<TitleProps> = ({
               setActivity(!activity());
             }}
           >
-            <a aria-current={activity() ? "page" : undefined} class="contrast">
-              {title}
-            </a>
+            {title}
           </h1>
           <h2
             classList={{
@@ -43,9 +41,7 @@ export const Title: Component<TitleProps> = ({
               setJoke(!joke());
             }}
           >
-            <a aria-current={joke() ? "page" : undefined} class="secondary">
-              {subtitle}
-            </a>
+            {subtitle}
           </h2>
         </hgroup>
       </li>
