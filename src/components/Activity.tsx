@@ -32,13 +32,6 @@ export const Activity: Component = () => {
     );
   };
 
-  const fadeOut = (el: Element, done: () => void): void => {
-    const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-      duration: 600,
-    });
-    a.finished.then(done);
-  };
-
   return (
     <footer
       onclick={newSuggestion}
