@@ -1,5 +1,6 @@
 import { Component, createResource, createSignal, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { fadeOut } from "../transitions/fades";
 
 export const Activity: Component = () => {
   const fetchActivity = async () =>
