@@ -38,9 +38,7 @@ const Layout: Component<RouteSectionProps> = (props) => {
     document.title = "Elliot > " + (currentPage || pages[0]).title;
   });
 
-  setTimeout(() => {
-    setShowHint(true);
-  }, 2000);
+  setTimeout(() => {setShowHint(true);}, 2000);
 
   setTimeout(() => {
     setShowHint(false);
