@@ -19,16 +19,40 @@ export const Activity: Component = () => {
     }
   };
 
+  const hintFooter = (
+    <Transition onExit={fadeOut}>
+      <Show when={!hideHint()}>
+        <article
+          style={{ "padding-top": 0, "margin-top": 0, "margin-bottom": 0 }}
+        >
+          <footer
+            style={{
+              "font-style": "oblique",
+              "font-size": "0.8em",
+              "margin-top": 0,
+            }}
+          >
+            Click to update
+          </footer>
+        </article>
+      </Show>
+    </Transition>
+  );
+
   const errorFallback = () => {
     return (
-      <article style={{ "margin-bottom": 0 }}>
-        <header>
-          <strong>Have a laugh!</strong>
-        </header>
-        <p classList={activityClasses} aria-busy="true">
-          The Bored API might be dowm.
-        </p>
-      </article>
+      <>
+        <article style={{ "margin-bottom": 0 }}>
+          <header>
+            <strong>Try this activity</strong>
+          </header>
+          <p classList={activityClasses} aria-busy="true">
+            Loading from The Bored API.
+          </p>
+        </article>
+
+        {hintFooter}
+      </>
     );
   };
 
@@ -58,23 +82,7 @@ export const Activity: Component = () => {
           <p classList={activityClasses}>{activity().activity}</p>
         </article>
 
-        <Transition onExit={fadeOut}>
-          <Show when={!hideHint()}>
-            <article
-              style={{ "padding-top": 0, "margin-top": 0, "margin-bottom": 0 }}
-            >
-              <footer
-                style={{
-                  "font-style": "oblique",
-                  "font-size": "0.8em",
-                  "margin-top": 0,
-                }}
-              >
-                Click to update
-              </footer>
-            </article>
-          </Show>
-        </Transition>
+        {hintFooter}
       </Show>
     </footer>
   );
