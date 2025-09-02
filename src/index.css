@@ -39,3 +39,14 @@ h1 > a,
 h2 > a {
   text-decoration: none !important;
 }
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin-bottom: 0.5rem;
+  }
+}
