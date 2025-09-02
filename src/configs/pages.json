@@ -29,5 +29,13 @@
       "Furthermore, I maintain an active interest in music. I play several musical instruments, with the guitar being my primary focus. My passion for music has led me to create original compositions, some of which I have shared on <a href=\"https://www.youtube.com/@toilled\" class=\"contrast\" target=\"_blank\">YouTube</a>. This platform serves as a means for me to express my creativity and connect with others who share similar interests.",
       "Through these hobbies, I continue to enhance my skills and broaden my horizons in both technology and the arts."
     ]
+  },
+  {
+    "name": "Projects",
+    "link": "/projects",
+    "title": "Projects",
+    "body": [
+      "Here are the projects I've worked on. Unfortunately, I cannot share source code for many of them."
+    ]
   }
 ]
