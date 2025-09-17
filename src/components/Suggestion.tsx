@@ -42,6 +42,8 @@ export const Suggestion: Component<SuggestionProps> = ({
     );
   };
 
+  const hoverHintText = "Click for a new " + valueName;
+
   return (
     <footer
       onclick={newSuggestion}
@@ -49,7 +51,7 @@ export const Suggestion: Component<SuggestionProps> = ({
     >
       <Show when={suggestion()} fallback={errorFallback()}>
         <article
-          title="Click for a new suggestion"
+          title={hoverHintText}
           style={{ "margin-bottom": 0 }}
         >
           <header>
