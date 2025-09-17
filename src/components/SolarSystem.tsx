@@ -37,7 +37,7 @@ function Sun() {
 
 export function SolarSystem() {
   return (
-    <Canvas camera={{ position: [0, 20, 40], fov: 75 }}>
+    <Canvas defaultCamera={{ position: [0, 20, 40], fov: 75 }}>
       <T.AmbientLight intensity={0.1} />
       <T.PointLight color="white" intensity={100} position={[0, 0, 0]} />
       <Sun />
