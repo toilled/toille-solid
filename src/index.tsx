@@ -10,6 +10,7 @@ import { PageContent } from "./components/PageContent";
 import { Checker } from "./components/Checker";
 import { Activity } from "./components/Activity";
 import { Suggestion } from "./components/Suggestion";
+import { SolarSystem } from "./components/SolarSystem";
 
 import pages from "./configs/pages.json";
 import titles from "./configs/titles.json";
@@ -52,6 +53,7 @@ const Layout: Component<RouteSectionProps> = (props) => {
 
   return (
     <>
+      <SolarSystem />
       <nav>
         <Title
           title={titles.title}
