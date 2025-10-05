@@ -5,7 +5,7 @@ import { Suggestion } from '../Suggestion';
 // Mock the fetch API
 global.fetch = vi.fn();
 
-function createFetchResponse(data: any) {
+function createFetchResponse(data: Record<string, unknown>) {
   return { json: () => new Promise((resolve) => resolve(data)) };
 }
 
