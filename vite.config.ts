@@ -17,4 +17,18 @@ export default defineConfig({
   build: {
     target: "esnext",
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/setupTests.ts',
+    // transformMode: {
+    //   web: [/\.[jt]sx?$/],
+    // },
+    // deps: {
+    //   inline: [/solid-js/],
+    // },
+  },
+  resolve: {
+    conditions: ['development', 'browser'],
+  },
 });
