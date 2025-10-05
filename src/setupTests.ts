@@ -6,6 +6,6 @@ if (!Element.prototype.animate) {
     return {
       finished: Promise.resolve(),
       cancel: () => {},
-    } as any;
+    } as Partial<Animation>;
   };
 }
