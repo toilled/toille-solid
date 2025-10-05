@@ -5,8 +5,8 @@ import { Activity } from '../Activity';
 // Mock the fetch API
 global.fetch = vi.fn();
 
-function createFetchResponse(data: any) {
-  return { json: () => new Promise((resolve) => resolve(data)) };
+function createFetchResponse<T>(data: T) {
+  return { json: () => new Promise<T>((resolve) => resolve(data)) };
 }
 
 describe('Activity component', () => {
