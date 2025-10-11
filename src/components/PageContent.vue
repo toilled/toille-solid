@@ -1,17 +1,7 @@
 <template>
   <main>
     <header>
-      <h2
-        class="title"
-        @mousedown="
-          () => {
-            showHint = true;
-            setTimeout(() => {
-              showHint = false;
-            }, 500);
-          }
-        "
-      >
+      <h2 class="title" @mousedown="handleMouseDown">
         <template v-if="page">
           {{ page.title }}
           <Transition name="fade">
@@ -69,6 +59,13 @@ const page = computed(() => {
   }
   return pages[0];
 });
+
+function handleMouseDown() {
+  showHint.value = true;
+  setTimeout(() => {
+    showHint.value = false;
+  }, 500);
+}
 
 watch(
   () => route.params.name,
