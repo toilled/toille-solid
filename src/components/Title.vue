@@ -2,16 +2,10 @@
   <ul>
     <li>
       <hgroup>
-        <h1
-          class="title question"
-          @mousedown="$emit('activity', !activity)"
-        >
+        <h1 class="title question" @mousedown="$emit('activity')">
           {{ title }}
         </h1>
-        <h2
-          class="title question"
-          @mousedown="$emit('joke', !joke)"
-        >
+        <h2 class="title question" @mousedown="$emit('joke')">
           {{ subtitle }}
         </h2>
       </hgroup>
@@ -28,7 +22,7 @@ defineProps<{
 }>();
 
 defineEmits<{
-  (e: "activity", value: boolean): void;
-  (e: "joke", value: boolean): void;
+  (e: "activity"): void;
+  (e: "joke"): void;
 }>();
 </script>

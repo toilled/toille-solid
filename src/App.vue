@@ -3,14 +3,16 @@
     <Title
       :title="titles.title"
       :subtitle="titles.subtitle"
-      @activity="setActivity"
-      @joke="setJoke"
+      :activity="activity"
+      :joke="joke"
+      @activity="toggleActivity"
+      @joke="toggleJoke"
     />
     <Menu :pages="pages" />
   </nav>
   <router-view></router-view>
   <Transition name="fade">
-    <footer v-if="noFootersShowing && showHint" @click="setChecker(true)">
+    <footer v-if="noFootersShowing && showHint" @click="checker = !checker">
       The titles might be clickable...
     </footer>
   </Transition>
@@ -51,16 +53,12 @@ const noFootersShowing = computed(() => {
   return !activity.value && !checker.value && !joke.value;
 });
 
-function setActivity(value: boolean) {
-  activity.value = value;
+function toggleActivity() {
+  activity.value = !activity.value;
 }
 
-function setJoke(value: boolean) {
-  joke.value = value;
-}
-
-function setChecker(value: boolean) {
-  checker.value = value;
+function toggleJoke() {
+  joke.value = !joke.value;
 }
 
 onMounted(() => {
