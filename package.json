@@ -1,5 +1,5 @@
 {
-  "name": "toille-solid",
+  "name": "toille-vue",
   "version": "0.9.0",
   "description": "A test website for Elliot Dickerson",
   "scripts": {
@@ -11,19 +11,17 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@vitejs/plugin-vue": "^5.1.0",
     "eslint": "^9.21.0",
     "globals": "^15.15.0",
     "prettier": "3.5.3",
-    "solid-devtools": "^0.33.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.26.0",
-    "vite": "6.1.0",
-    "vite-plugin-solid": "^2.11.1"
+    "vite": "6.1.0"
   },
   "dependencies": {
     "@picocss/pico": "^2",
-    "@solidjs/router": "^0.15.3",
-    "solid-js": "^1.9.4",
-    "solid-transition-group": "^0.3.0"
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0"
   }
 }
